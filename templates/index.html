@@ -393,7 +393,7 @@ function punchit(){
 }
 });
 </script>
-<div ng-controller="CreatePunch">
+<div ng-controller="CreatePunch" style="overflow-y: auto;">
   <div class="fixed-action-btn" style="bottom: 45px; right: 44px;">
     <a class="btn-floating btn-large waves-effect waves-light btn modal-trigger" style="background-color:#ff4545" id="Punch" href="#PunchModel">
       <!--<img src="images/FloatingPunch1.png" style="height:inherit;width:inherit"/>-->
@@ -485,7 +485,9 @@ if($(window).width()<1000){
   $("#post_img1").css("height","300px")
   $("#post_img2").css("height","300px")
 }
-
+$(function(){
+  $("#newPunches").hide()
+})
 </script>
 
 <style>
