@@ -355,6 +355,7 @@ app.controller("CreatePunch",function($scope){
 										$('#PunchModel').closeModal();
 										var $toastContent = $('<span> Posted successfully</span>');
 										Materialize.toast($toastContent, 5000);
+                    $('#CreatePunch')[0].reset();
 							},
 							error: function (error) {
 								var $toastContent = $('<span>'+String(error)+'</span>');

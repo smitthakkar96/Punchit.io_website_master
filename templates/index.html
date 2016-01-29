@@ -401,78 +401,80 @@ function punchit(){
     </a>
   </div>
   <div id="PunchModel" class="modal">
-    <div class="modal-content">
-      <div class="row">
-        <div class="col s12">
-          <input type="text" placeholder="Title" class="textcenter" ng-model="Title">
-        </div>
-        <div class="col s12">
-          <div class="row">
-            <div class="col s6">
-              <div class="file-field input-field">
-                <div class="" style="height:inherit;width:100%">
-                  <center>
-                    <img src="images/kitkat.png" class="responsive-img" id="Preview1" style="" />
-                  </center>
-                  <input type="file" id="Image1">
+    <form id="CreatePunch">
+      <div class="modal-content">
+        <div class="row">
+          <div class="col s12">
+            <input type="text" placeholder="Title" class="textcenter" ng-model="Title">
+          </div>
+          <div class="col s12">
+            <div class="row">
+              <div class="col s6">
+                <div class="file-field input-field">
+                  <div class="" style="height:inherit;width:100%">
+                    <center>
+                      <img src="images/kitkat.png" class="responsive-img" id="Preview1" style="" />
+                    </center>
+                    <input type="file" id="Image1">
+                  </div>
                 </div>
               </div>
-            </div>
-            <div class="col s6">
-              <div class="file-field input-field">
-                <div class="" style="width:100%">
-                  <center>
-                    <img src="images/lolipop.png" class="responsive-img" style="" id="Preview2"/>
-                  </center>
-                  <input type="file" id="Image2">
-                </div>
-              </div>
-            </div>
-
-          </div>
-        </div>
-        <div class="col s12">
-          <div class="row">
-            <div class="col s6">
-              <input type="text" class="ImgTitle textcenter" placeholder="Title1" ng-model="Image1Title">
-            </div>
-            <div class="col s6">
-              <input type="text" class="ImgTitle textcenter" placeholder="Title2" ng-model="Image2Title">
-            </div>
-          </div>
-        </div>
-        <div class="col s12">
-          <input type="text" placeholder="Tag Communites" class="textcenter" id="Community" ng-model="Communites">
-        </div>
-        <div class="col s12">
-          <div class="row" style="margin-top:1%;">
-            <center>
-              <div class="col l12 s12">
-                <center>
-                  <a id="createpunch_btn"class="waves-effect waves-light btn" style="width:40%;height:inherit;background-color:#ff4545;" ng-click="punchit()">Punch It</a>
-                </center>
-              </div>
-            </center>
-            <div class="col l1 s12 center" id="wait" style="margin-right:10px;">
-
-              <div class="preloader-wrapper active">
-                <div class="spinner-layer spinner-blue-only">
-                  <div class="circle-clipper left">
-                    <div class="circle"></div>
-                  </div><div class="gap-patch">
-                    <div class="circle"></div>
-                  </div><div class="circle-clipper right">
-                    <div class="circle"></div>
+              <div class="col s6">
+                <div class="file-field input-field">
+                  <div class="" style="width:100%">
+                    <center>
+                      <img src="images/lolipop.png" class="responsive-img" style="" id="Preview2"/>
+                    </center>
+                    <input type="file" id="Image2">
                   </div>
                 </div>
               </div>
 
             </div>
           </div>
+          <div class="col s12">
+            <div class="row">
+              <div class="col s6">
+                <input type="text" class="ImgTitle textcenter" placeholder="Title1" ng-model="Image1Title">
+              </div>
+              <div class="col s6">
+                <input type="text" class="ImgTitle textcenter" placeholder="Title2" ng-model="Image2Title">
+              </div>
+            </div>
+          </div>
+          <div class="col s12">
+            <input type="text" placeholder="Tag Communites" class="textcenter" id="Community" ng-model="Communites">
+          </div>
+          <div class="col s12">
+            <div class="row" style="margin-top:1%;">
+              <center>
+                <div class="col l12 s12">
+                  <center>
+                    <a id="createpunch_btn"class="waves-effect waves-light btn" style="width:40%;height:inherit;background-color:#ff4545;" ng-click="punchit()">Punch It</a>
+                  </center>
+                </div>
+              </center>
+              <div class="col l1 s12 center" id="wait" style="margin-right:10px;">
+
+                <div class="preloader-wrapper active">
+                  <div class="spinner-layer spinner-blue-only">
+                    <div class="circle-clipper left">
+                      <div class="circle"></div>
+                    </div><div class="gap-patch">
+                      <div class="circle"></div>
+                    </div><div class="circle-clipper right">
+                      <div class="circle"></div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+    </form>
 </div>
 
 <script>
