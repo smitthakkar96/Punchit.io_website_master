@@ -1,0 +1,737 @@
+<!DOCTYPE html>
+
+<head>
+
+<title>Punchit.io</title>
+
+
+<!-- meta -->
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<!-- favicon -->
+	<link rel="shortcut icon" type="image/x-icon" href="images/favicon.png" />
+
+<!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+<!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
+    <link rel="stylesheet" type="text/css" href="homepage_css.css">
+<!--Import jQuery before materialize.js-->
+<script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+<script type="text/javascript" src="js/materialize.min.js"></script>
+<script type="text/javascript" src="js/jquery.foggy.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+<script type="text/javascript" src="js/app.js"></script>
+<script type="text/javascript" src="js/controllers.js"></script>
+<script type="text/javascript" src="js/factory.js"></script>
+<script src="https://www.parsecdn.com/js/parse-1.6.12.min.js"></script>
+<script src="js/quantize.js"></script>
+<script src="js/ColorThief.js"></script>
+    <!--<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>-->
+	<!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">-->
+    <script>
+
+
+$(document).ready(function(){
+    $('#share').hover(
+    function()
+    {
+        this.src="images/share1.png"
+    },
+    function()
+    {
+        this.src="images/share.png"
+    }
+)
+
+    $('#spam1').hover(
+    function()
+    {
+        this.src="images/spam1.png"
+    },
+    function()
+    {
+        this.src="images/spam.png"
+    }
+)
+
+    $('#comment').hover(
+    function()
+    {
+        this.src="images/comment1.png"
+    },
+    function()
+    {
+        this.src="images/comment.png"
+    }
+)
+
+   $('.modal-trigger').leanModal();
+
+
+});
+
+</script>
+
+
+<!-- CDNs -->
+	<!-- Compiled and minified CSS -->
+<!--		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">	-->
+
+	<!-- Compiled and minified JavaScript -->
+<!--		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/js/materialize.min.js"></script>	-->
+
+
+	<style type="text/css">
+		.card-title{
+			color: #000;
+		}
+		.fixed-action-btn{
+
+			padding:0px;
+			margin-top:-5px;
+
+		}
+		#dropdown1{
+			color: #ee6e73;
+		}
+
+		::-webkit-scrollbar {
+			display: none;
+		}
+		::-moz-scrollbar {
+			display: none;
+		}
+		::scrollbar {
+			display: none;
+		}
+
+
+
+		.col-1 {width: 8.33%;}
+.col-2 {width: 16.66%;}
+.col-3 {width: 25%;}
+.col-4 {width: 33.33%;}
+.col-5 {width: 41.66%;}
+.col-6 {width: 50%;}
+.col-7 {width: 58.33%;}
+.col-8 {width: 66.66%;}
+.col-9 {width: 75%;}
+.col-10 {width: 83.33%;}
+.col-11 {width: 91.66%;}
+.col-12 {width: 100%;}
+
+		@media only screen and (max-width: 768px) {
+
+    [class*="col-"] {
+        width: 100%;
+    }
+}
+
+	</style>
+
+</head>
+
+<body ng-app="app">
+	<div class="navbar-fixed row" ng-controller="myCtrl">
+	  <ul class="side-nav collection" id="mobile-demo">
+
+	      <li class="collection-item"><center><img src="{a ProfilePicture_url a}" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>
+	      <br/><b style="color:#ff4545">{a Name a}</b></center>
+	      </li>
+
+	      <li>
+	          <a>Edit Profile</a>
+	      </li>
+	      <li>
+	          <a>Logout</a>
+	      </li>
+	  </ul>
+
+	   <nav style="background-color:#ff4545">
+	    <div class="nav-wrapper row">
+	      <div>
+	      <a href="/" class="brand-logo center responsive-img"><img src="images/logo.png" style="margin-top:5px;height:50px;width:inherit"/></a>
+	      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
+	      </div>
+	      <div class="right hide-on-med-and-down">
+	        <div class="row">
+
+	          <div class="col l12 s12">
+
+	               <!--<div class="chip">
+	               <div class="chip">
+	      <img src="http://www.voritos.com/wp-content/uploads/2015/01/taylor_swift_best_hd_image.jpg" alt="Contact Person">
+	       Jane Doe
+	    </div>-->
+	    <div class="right">
+	      <div class="row">
+	        <!--
+			<div class="col">
+	          <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown2'>
+	            <i class="material-icons">notifications</i>
+	          </a>
+	          <ul id='dropdown2' class='dropdown-content collection' style="width:300px;margin-top:80px;background-color:rgba(255,255,255,1);">
+	              <li class="collection-item"><p></p></li>
+	          </ul>
+
+	        </div>
+			-->
+	          <div class="col">
+	              <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown1'>
+	              <div class="chip" href="/Profile" style="margin-top:15px;width:120px;">
+	                <img src="{a ProfilePicture_url a}" class="profile-img responsive-img" style="height:inherit;">
+	                  <font class="right">{a Name a}</font>
+	              </div>
+	              </a>
+	              <ul id='dropdown1' class='dropdown-content right' style="margin-top:13px;background-color:rgba(255,255,255,0);">
+	                  <li><a href="/Profile" style="color:#ff4545"><i class="material-icons">person_outline</i>My profile</li>
+	                      <li class="divider"></li>
+	                <li><a href="/Settings" style="color:#ff4545"><i class="material-icons">format_quote</i>Settings</li>
+	                    <li class="divider"></li>
+	                <li><a href="/logout" style="color:#ff4545"><i class="material-icons">power_settings_new</i>Logout</a></li>
+	                    <li class="divider"></li>
+	              </ul>
+	            </div>
+	      </div>
+	      </div>
+
+
+	          </div>
+	        </div>
+	      </div>
+
+	    </div>
+	  </nav>
+	</div>
+
+
+  <script>
+
+  $(".button-collapse").sideNav();
+
+  </script>
+
+
+
+  <!--**************************************CARD BODY CARD SECTION****************************************************** -->
+
+<div class="container">
+<div class="row">
+<div class="col s12 m12">
+	<!-- J code -->
+	<div ng-controller="DetailsController">
+			<div style="position:relative;">
+
+				<img class="bg_foggy center" id="foggy" src="{a ProfilePicture a}" style="{a blur_img a} ;position:absolute;z-index:-1;"/>
+
+	<div class="row" style="color:#fff">
+		<!--<div class="section card col s10 m10" style="width:90%;margin-left:7%; margin-top:50px;">-->
+			<center>
+				<img class="circle responsive-img" id="ProfilePicture" src="{a ProfilePicture a}" style="height:200px;width:200px;border:{a color a} solid 1px"/></br/>
+				<span class="title">
+					<b style="color:{a color a};"><h3>{a Name a}</h3></b>
+				</span>
+				<span class="title">
+					<b style="color:{a color a};"><h5>{a Ninja_name a}</h5></b>
+				</span>
+			</center>
+		<!--</div>-->
+	</div>
+	<center>
+	<a class="" id="Follow" ng-click="FollowUnfollowAction()" style="margin-top:auto;display:{a display a};color:{a color a};border : solid 1px;border-radius: 5px;padding-right: 24px;border-width:medium;padding-left: 24px;padding-top: 2px;padding-bottom: 2px;width:120px">
+	<b>{a icon a}</b>
+	</a>
+	</center>
+
+</div>
+	<center>
+		<div class="row" style="background-color:rgba(255,255,255,0); color:#000; {a ffp_full a} ;margin-left:-20px;">
+			<div class="col s12">
+				<div class="col s4" style="float:left;color:{a color a};">
+					<center>
+						<p class="center">Followers</p>
+						<p class="center" style="{a follower a} ;"><b>{a Followers a}</b></p>
+					</center>
+				</div>
+				<div class="col s4" style="border-left:3px solid {a color a}; border-radius:5px;float:left;color:{a color a};">
+					<center>
+						<p class="center">Following</p>
+						<p class="center" style="{a following a}"><b>{a Following a}</b></p>
+					</center>
+				</div>
+				<div class="col s4" style="float:left;color:{a color a};border-left:3px solid {a color a}; border-radius:5px;">
+					<center>
+						<p class="center">Posts</p>
+						<p class="center" style=""><b>{a Data.Value a}</b></p>
+					</center>
+				</div>
+			</div>
+		</div>
+	</center>
+</div>
+	<!-- end J code -->
+<!--	<div class="row" style="color:#ee6e73;">
+		<div class="section card col s12 m12 l12 small" style="" ng-controller="DetailsController">
+				<div class="row">
+					<div class="col l4" style="padding-top:8%">
+							<h4 align="center" style="color:#ff4545">{a Name a}</h3>
+							<h5 align="center" style="color:#ff4545">{a Ninja_name a}</h4>
+					</div>
+					<div class="col l4" style="height:100%;padding-top:4%;padding-left:7%;">
+							<img style="border-radius:50%;margin-top:2%;width:200px" src="{a ProfilePicture a}">
+					</div>
+					<div class="col l4" style="margin-top:2%">
+							<table style="color:#ff4545">
+									<tr>
+										<td><h5>Followers</h5></td>
+										<td>:</td>
+										<td><h5>{a Followers a}</h5><td>
+									</tr>
+									<tr>
+										<td><h5>Folllwing</td>
+										<td>:</td>
+										<td><h5>{a Following a}</h5><td>
+									</tr>
+									<tr>
+										<td><h5>Posts</td>
+										<td>:</td>
+										<td><h5>{a Data.Value a}</h5><td>
+									</tr>
+								</table>
+					</div>
+				</div>
+				<div class="" style="margin-top: -15px;margin-right: 2%;float: right;">
+					<a class="btn-floating btn-large waves-effect waves-light tooltipped" id="Follow" ng-click="FollowUnfollowAction()" style="background-color: #ff4545;height: 70px;width: 70px;" data-position="right" data-delay="50" data-tooltip="{a isFollowing a}">
+							<i class="large material-icons" style="font-size: xx-large;padding-top: 6px;padding-right: 30;">{a icon a}</i>
+					</a>
+				</div>
+		</div>
+	</div>	-->
+	</div>
+</div>
+	<div class="row" ng-controller="UserPunchesController">
+		<div class="col l12 s12">
+	<!--<div id="fullpage">-->
+	     <div class="section card col l8 s12 center" style="width:{a width a};margin-left:{a pcmargin a}" id="main_card" ng-repeat="SinglePost in posts" ng-hide="{a PostsVisibility a}">
+	      <div class="card-content content">
+	        <div class="row">
+	            <div class="col s12">
+	       <center class="row">
+	        <img class="circle responsive-img col s6" src="{a SinglePost.get('By').get('ProfilePicture').url() a}" style="height:50px;width:74px"/>
+
+	          <span class="col s6" style="margin-top:15px;">
+	            <a href="/Profile?id={a SinglePost.get('By').id a}" style="color:red;float:left">{a SinglePost.get('By').get('Ninja_name') a}</a>
+	          </span>
+
+	          <span style="float:right;color:grey;margin-top:15px;margin-right:1%;" class="s10">
+	            {a SinglePost.get('TimeStamp') a}
+	          </span>
+	       </center>
+
+	           </div>
+
+	        <!-- Post Question -->
+	        <div style="margin-top:1%;" class="col s12">
+	       <p style="color:#989489;font-size:18px;text-align:left;margin-left:1%;">{a SinglePost.get('Title') a}</p>
+
+	        </div>
+	      </div>
+	          </div>
+
+	          <!-- Post images -->
+	    <div class="card-image" style="margin-left: 1%; margin-top:-2%;">
+	      <div class="row">
+
+	        <div class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:400px;background-image:url('images/background2.png');background-size:330px 500px;background-repeat:no-repeat;">
+							<img class="responsive-img right" src="images/post_tick.png" style="margin-top:-6.5%;left:22px;height:70px; width:70px;"/>
+	            <a ng-click="Punch($index,1)"><img class="responsive-img" src="{a SinglePost.get('Image1').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
+	        </div>
+	          <div class="col waves-effect waves-light" style="margin-left:1%;border:1px solid #989489;width:45%;padding:10px;height:400px;background-image:url('images/mirror_background2.jpg');background-size:330px 500px;background-repeat:no-repeat;">
+								<img class="responsive-img right" src="images/post_tick.png" style="margin-top:-7%;left:22px;height:70px; width:70px;"/>
+	              <a ng-click="Punch($index,2)"><img class="responsive-img" src="{a SinglePost.get('Image2').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
+	          </div>
+
+	    </div>
+	         </div>
+	      <div class="card-content" style="margin-top:-5%;">
+	            <div class="row">
+	                <div class="col s6">
+	                    <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image1Title') a}</p>
+	                    <div style="background-color:#ff4545;color: #ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
+	                    <div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{a SinglePost.get('Punchers1').length a}</p></div>
+	                </div>
+	                <div class="col s6">
+	                    <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image2Title') a}</p>
+	                    <div style="background-color:#ff4545;color:#ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
+	                    <center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;">{a SinglePost.get('Punchers2').length a}</div></center>
+	                </div>
+
+	            </div>
+	      </div>
+
+	      <!-- share comment icons -->
+	      <div class="row">
+
+	        <div class="col s2 l1">
+	          <a href=""><img src="images/share.png" style="margin-left:7px;height:inherit;width:70px;" id="share"/></a>
+	        </div>
+	        <div class="col s2 l1">
+	          <a href="" class="modal-trigger"><img src="images/comment.png" style="height:inherit;width:70px;margin-left:10px;" id="comment" ng-click="openComment($index)"/></a>
+	        </div>
+	      </div>
+	          </div>
+	        <!-- #############################Load more##########################################  -->
+	        <div class="col l12" id="spinner">
+	          <center>
+	              <img src="images/spinner.gif"/>
+	          </center>
+	        </div>
+	        <div id="modal1" class="modal modal-fixed-footer" style="overflow:hidden">
+	          <div class="modal-content">
+
+			  <!-- show when no comments -->
+				<center><label id="no_comment">No comments. Be the first one to comment.</label></center>
+
+	            <ul class="collection">
+	                <li class="collection-item avatar" ng-repeat="comment in comments">
+	                  <img src="{a comment.get('User').get('ProfilePicture').url() a}" alt="" class="circle" style="border:1px solid #ff4545;">
+	                  <span class="title"><a href="/Profile?id={a comment.get('User').id a}"><b style="color:#ff4545">{a comment.get('User').get('Ninja_name') a}</b></a></span>
+	                  <p class="commentText">{a comment.get("comment") a}<br>
+	                  </p>
+	                </li>
+	              </ul>
+
+	              <div class="preloader-wrapper big active" style="margin-left:50%;display:none">
+	                <div class="spinner-layer spinner-red-only">
+	                    <div class="circle-clipper left">
+	                      <div class="circle"></div>
+	                    </div><div class="gap-patch">
+	                      <div class="circle"></div>
+	                    </div><div class="circle-clipper right">
+	                      <div class="circle"></div>
+	                </div>
+	                </div>
+	              </div>
+
+	              <div class="col l12">
+	                <a><img src="images/LoadMore.png" style="margin-left:40%;width:25%;height:inherit;display:none"/></a>
+	              </div>
+	          </div>
+	        <div class="modal-footer" style="height:110px;overflow:auto;">
+              <div class="row">
+                <div class="col l12 s12">
+                  <div class="input-field col l10 s9">
+						<label for="textarea1">Enter a Comment...</label>
+						<textarea id="textarea1" class="materialize-textarea" style="margin-bottom:5px;color:#ff4545;margin-right:10px;padding:0;" ng-model="cc"></textarea>
+                  </div>
+                  <div class="col l2 s2">
+                    <a class="waves-effect waves-light btn" style="background-color:#ff4545;" ng-click="PostComment()"><i class="material-icons">comment</i></a>
+                  </div>
+				  <div class="col l12">
+					<input type="checkbox" class="filled-in" id="filled-in-box" checked="checked" style="margin-top:5px;"/>
+					<label for="filled-in-box">Enter to send.</label>
+				  </div>
+                </div>
+              </div>
+        </div>
+	        </div>
+	          </div>
+
+
+
+
+
+
+
+
+
+
+<!--
+
+	<div ng-controller="UserPunchesController">
+		<div class="section card col l8 s12"  style="width:70%;margin-left:16%;" ng-repeat="SinglePost in posts" ng-hide="{a PostsVisibility a}">
+		 <div class="card-content content">
+			 <div class="row">
+					 <div class="col s12">
+			<center class="row">
+			 <img class="circle responsive-img col s6" src="{a SinglePost.get('By').get('ProfilePicture').url() a}" style="height:30%;width:74px"/>
+
+				 <span class="col s6">
+					 <a href="#" style="color:red;float:left">{a SinglePost.get('By').get('Ninja_name') a}</a>
+				 </span>
+
+				 <span style="float:right;color:grey" class="s10">
+					 {a SinglePost.get('TimeStamp') a}
+				 </span>
+			</center>
+
+					</div>
+
+			 <div style="background-color:#989489;" class="col s12">
+			<p style="color:#fff;font-size:100%;text-align:center;margin-top:-0%;">{a SinglePost.get('Title') a}</p>
+
+			 </div>
+		 </div>
+				 </div>
+	 <div class="card-image" style="width: 98%;margin-top: -5%;margin-left: 1%;">
+		 <div class="row">
+			 <div class="col  waves-effect waves-light" style="width:50%;height:400px">
+					 <a ng-click="Punch($index,1)"><img class="responsive-img" src="{a SinglePost.get('Image1').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
+			 </div>
+				 <div class="col  waves-effect waves-light" style="width:50%;height:400px">
+						 <a ng-click="Punch($index,2)"><img class="responsive-img" src="{a SinglePost.get('Image2').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
+				 </div>
+	 </div>
+				</div>
+		 <div class="card-content" style="margin-top:-5%;">
+					 <div class="row">
+							 <div class="col s6">
+									 <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image1Title') a}</p>
+									 <div style="background-color:#ff4545;color: #ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
+									 <div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{a SinglePost.get('Punchers1').length a}</p></div>
+							 </div>
+							 <div class="col s6">
+									 <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image2Title') a}</p>
+									 <div style="background-color:#ff4545;color:#ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
+									 <center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;border:2px solid black;border-radius:50%;border-color:#ff4545;">{a SinglePost.get('Punchers2').length a}</div></center>
+							 </div>
+
+					 </div>
+		 </div>
+		 <div class="row" style="margin-left:10%">
+			 <div class="col s4 l4">
+				 <a><img src="images/share.png" style="height:inherit;width:50%" id="share"></a>        </div>
+			 <div class="col s4 l4">
+				 <a href="" class="modal-trigger"><img src="images/comment.png" style="height:inherit;width:50%" id="comment" ng-click="openComment($index)"></a>
+			 </div>
+			 <div class="col s4 l4">
+				 <a><img src="images/spam.png" style="height:inherit;width:50%" id="spam"></a>
+			 </div>
+		 </div>
+				 </div>
+				 <div class="col l12" id="spinner">
+           <img src="images/spinner.gif" style="margin-left:35%"/>
+         </div>
+				 <div id="modal1" class="modal modal-fixed-footer" style="overflow:hidden">
+					 <div class="modal-content">
+						 <ul class="collection">
+								 <li class="collection-item avatar" ng-repeat="comment in comments">
+									 <img src="{a comment.get('User').get('ProfilePicture').url() a}" alt="" class="circle" style="">
+									 <span class="title"><a href="/Profile?id={a comment.get('User').id a}"><b style="color:#ff4545">{a comment.get('User').get('Ninja_name') a}</b></a></span>
+									 <p class="commentText">{a comment.get("comment") a}<br>
+									 </p>
+								 </li>
+							 </ul>
+
+							 <div class="preloader-wrapper big active" style="margin-left:50%;display:none">
+								 <div class="spinner-layer spinner-red-only">
+										 <div class="circle-clipper left">
+											 <div class="circle"></div>
+										 </div><div class="gap-patch">
+											 <div class="circle"></div>
+										 </div><div class="circle-clipper right">
+											 <div class="circle"></div>
+								 </div>
+								 </div>
+							 </div>
+
+							 <div class="col l12">
+								 <a><img src="images/LoadMore.png" style="margin-left:40%;width:25%;height:inherit;display:none"/></a>
+							 </div>
+					 </div>
+				 <div class="modal-footer">
+							 <div class="row">
+									 <div class="col s10">
+									 <input type="text" style="color:red" ng-model="cc"/>
+									 </div>
+									 <div class="col">
+					 <a class="waves-effect waves-light btn" style="background-color:#ff4545" ng-click="PostComment()"><i class="material-icons left">comment</i></a>
+									 </div>
+							 </div>
+				 </div>
+				 </div>
+	</div>	-->
+</div>
+</div>
+</div>
+
+	<script>
+
+	$(document).ready(function(){
+		var width = $(window).width();
+		if (width < 720) {
+			$("#im1").attr("src","punchit_logo2.png").width(50);
+			$("#a").remove();
+			$("#mob_f1").show();
+			//$("#mob_f1").append("<div class='input-field' id='b'><input id='search' type='search' required><label for='search' style='margin-left:-20px;'><a href'#'><i class='material-icons' style='color:#ee6e73;'>search</i></a></label><i class='material-icons'>close</i></div>");
+		}
+		else {
+			$("#im1").attr("src","images/logo.png").width(200);
+			$("#mob_f1").hide();
+			//$("#f1").append($("<div class='input-field' id='a' style='margin-left:50px;'><input id='search' type='search' required><label for='search' style='margin-left:-20px;'><a href'#'><i class='material-icons'>search</i></a></label><i class='material-icons'>close</i></div>"));
+		}
+
+		$('.bg_foggy').foggy(true);
+		$('.bg_foggy').foggy({
+			blurRadius: 18,          // In pixels.
+			opacity: 0.7,           // Falls back to a filter for IE.
+			cssFilterSupport: true  // Use "-webkit-filter" where available.
+		});
+
+		$(".button-collapse").sideNav();
+		$('.modal-trigger').leanModal();
+
+
+
+  function unescapeHtml(text) {
+      return text.replace(/&amp;/g, '&')
+          .replace(/&lt;/g, '<')
+          .replace(/&gt;/g, '>')
+          .replace(/&quot;/g, '"')
+          .replace(/&#039;/g, "'");
+  }
+      $(function(){
+
+          var shortenP = function(options) {
+          options = $.extend({
+              length: 160,
+              ellipsis: ' [...]',
+              moreClass: 'more-link',
+              moreText: 'Read More'
+          }, options);
+          $('.commentText').each(function() {
+              var $p = $(this);
+              var text = $p.html();
+              var shortString = text.substring(0, options.length) + options.ellipsis;
+              $p.data('fulltext', text);
+              $p.html(unescapeHtml(shortString));
+              $('<a/>').attr({
+                  href: '#',
+                  'class': options.moreClass
+              }).html(options.moreText).
+              insertAfter($p);
+              $p.next().click(function(e) {
+
+                  $p.html($p.data('fulltext'));
+                  e.preventDefault();
+                  $(this).hide();
+              });
+
+          });
+
+      };
+
+      shortenP();
+            swapC()
+            $('#wait').hide()
+
+            $("#Image1").change(function(){
+            readURL(this,1);
+            });
+            $("#Image2").change(function(){
+            readURL(this,2);
+            });
+
+        })
+        function readURL(input,ot) {
+        if (input.files && input.files[0]) {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                    if(ot==1)
+                $('#Preview1').attr('src', e.target.result);
+                else
+                    $('#Preview2').attr('src', e.target.result);
+            }
+
+            reader.readAsDataURL(input.files[0]);
+        }
+    }
+    var dataSrc = ["Technology","Movies","Sports","News","Mens"];
+    var colors = ['#c5cae9','#bbdefb','#c8e6e9','#fff9c4','#ffe0b2','#ffe0b2','#ffcdd2']
+    var cPos = 0
+
+    function swapC() {
+    $( "<style>.rainbow {background : "+colors[cPos]+"}</style>" ).appendTo( "head" )
+//    $('.rainbow').toggle()
+    //$('#Punch').animate({ "background":colors[cPos] }, 500)
+    cPos++
+    if (cPos == colors.length) {
+        cPos = 0
+    }
+    window.setTimeout(function() { swapC() }, 500)
+}
+        function punchit(){
+            $('#wait').show()
+            window.setTimeout(function(){$('#PunchModel').closeModal()},5000)
+        }
+
+
+    });
+
+	$('#textarea1').trigger('autoresize');
+
+	$('.dropdown-button').dropdown({
+		inDuration: 300,
+		outDuration: 225,
+		constrain_width: true, // Does not change width of dropdown to that of the activator
+		hover: false, // Activate on hover
+		gutter: 0, // Spacing from edge
+		belowOrigin: true, // Displays dropdown below the button
+		alignment: 'left' // Displays dropdown with edge aligned to the left of button
+	});
+
+	$("#comment_id").click(function(){
+		$("#textarea1").focus();
+	});
+
+
+	$(window).resize(function(){
+		var width = $(window).width();
+		if (width < 720) {
+			$("#im1").attr("src","punchit_logo2.png").width(50);
+			$("#a").hide();
+			$("#mob_f1").show();
+			//$("<div class='input-field' id='b'><input id='search' type='search' required><label for='search' style='margin-left:-20px;'><a href'#'><i class='material-icons' style='color:#ee6e73;'>search</i></a></label><i class='material-icons'>close</i></div>").appendTo("#mob_f1");
+		}
+		else {
+			//alert($(window).width());
+			$("#im1").attr("src","images/logo.png").width(200);
+			$("#a").show();
+			$("#mob_f1").hide();
+			//$("#f1").append("<div class='input-field' id='a' style='margin-left:50px;'><input id='search' type='search' required><label for='search' style='margin-left:-20px;'><a href'#'><i class='material-icons'>search</i></a></label><i class='material-icons'>close</i></div>");
+		}
+
+		if(width < 1325){
+			$("#nav_container").removeClass();
+		}else{
+			$("#nav_container").addClass("container");
+		}
+
+    });
+
+	</script>
+
+</body>
+
+</html>
+
+
+      <style>
+      .profile-img
+      {
+      border-radius: 50%;
+      }
+      .textcenter
+          {
+              text-align:center;
+          }
+    .ImgTitle
+    {
+        height: 25px
+    }
+
+      </style>
