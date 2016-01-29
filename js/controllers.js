@@ -52,7 +52,7 @@ app.controller('bodyCtrl',function($scope,$http,PostService,Model,Search) {
 		}
 	};
   try{
-	var newPunches = document.getElementById('newPunches')
+	  var newPunches = document.getElementById('newPunches')
 	newPunches.style.display = 'none'
 }
 catch(e)
