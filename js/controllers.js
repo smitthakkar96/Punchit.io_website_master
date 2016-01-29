@@ -65,15 +65,16 @@ catch(e)
 	var channel = pusher.subscribe('PostChannel');
 	channel.bind('NewUpdate', function(data) {
 	var prom = PostService.GetSinglePost(data.message)
-	prom.then(function(Data){
-		console.log(JSON.stringify(Data[0]));
+	prom.then(function(newPost){
+		console.log(JSON.stringify(newPost));
 		Array.prototype.insert = function (index, item) {
 		  this.splice(index, 0, item);
 		};
 		var newPunches = document.getElementById('newPunches')
 		newPunches.style.display = 'block'
           // unshift(Data[0])
-          ($scope.$$phase || $scope.$root.$$phase) ? unshift() : $scope.$apply(unshift);
+          // ($scope.$$phase || $scope.$root.$$phase) ? unshift() : $scope.$apply(unshift);
+          $scope.posts.unshift(newPost)
           console.log($scope.posts);
     })
 	})
@@ -89,15 +90,7 @@ catch(e)
               console.log($scope.posts);
         })
     }
-    $scope.unshift = function unshift(data)
-    {
-        $scope.posts.unshift(data);
-    }
 
-    function unshift(data)
-    {
-        $scope.posts.unshift(data);
-    }
 	function detectmob() {
 	 if( navigator.userAgent.match(/Android/i)
 	 || navigator.userAgent.match(/webOS/i)

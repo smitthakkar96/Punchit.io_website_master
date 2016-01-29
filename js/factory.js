@@ -41,14 +41,15 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
     							var user = SinglePost.get('By')
     							user.fetch({
     								success:function(myObject) {
+                      var createdAt = SinglePost.get('createdAt')
+        							var timeStamp = Time.GetTimeStamp(createdAt)
+        							SinglePost.set('TimeStamp',timeStamp);
+        							SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
+        							SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
+                      deferred.resolve(Posts);
     								}
     							});
-    							var createdAt = SinglePost.get('createdAt')
-    							var timeStamp = Time.GetTimeStamp(createdAt)
-    							SinglePost.set('TimeStamp',timeStamp);
-    							SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
-    							SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
-                  if(SinglePost.get('Punchers1').length == 0)
+    							if(SinglePost.get('Punchers1').length == 0)
                   {
                   SinglePost.set('isVoted1',"none")
                   }
@@ -72,7 +73,7 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
                   }
     							Posts.push(SinglePost)
     						}
-                deferred.resolve(Posts);
+
     					}
     					else
               {
@@ -110,16 +111,17 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
                  var user = SinglePost.get('By')
                  user.fetch({
                    success:function(myObject) {
+                     var createdAt = SinglePost.get('createdAt')
+                     var timeStamp = Time.GetTimeStamp(createdAt)
+                     SinglePost.set('TimeStamp',timeStamp);
+                     SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
+                     SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
+                     deferred.resolve(SinglePost);
                    }
                  });
-                 var createdAt = SinglePost.get('createdAt')
-                 var timeStamp = Time.GetTimeStamp(createdAt)
-                 SinglePost.set('TimeStamp',timeStamp);
-                 SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
-                 SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
-                 Posts.push(SinglePost)
+
                }
-               deferred.resolve(Posts);
+
              }
              else
              {
