@@ -301,11 +301,35 @@ function detectmob() {
 
 })
 
-app.controller("CreatePunch",function($scope){
+
+app.controller("CreatePunch",function($scope,$filter){
+
+  var intrestQuery = new Parse.Query('Intrestlist')
+  intrestQuery.find({
+    success:function(Interests){
+    console.log(Interests);
+    var list = [];
+    for(var i=0;i<Interests.length;i++)
+    {
+      list.push(Interests[i].get('IntrestText'))
+    }
+    $scope.Interests = list;
+  }
+  })
 	$scope.punchit = function(){
 				var wait = document.getElementById("wait")
 				var PunchModel = document.getElementById("PunchModel")
-				wait.style.display = "block"
+
+    var InterestsArray = []
+    var cboxes = $('.Interests');
+    var len = cboxes.length;
+    console.log(cboxes);
+    var InterestsArray = [];
+    $.each($("input[class='Interests']:checked"), function(){
+        InterestsArray.push($(this).val());
+    });
+
+
 				var Title = $scope.Title;
 				var Image1 = $('#Image1')[0]; //File1
 				var Image2 = $('#Image2')[0]; //File2
@@ -317,8 +341,10 @@ app.controller("CreatePunch",function($scope){
 				var PostObject = Parse.Object.extend('Posts')
 				var Post = new PostObject();
 				var Communites = $scope.Communites
-				if(Image1.files.length > 0 && Image2.files.length > 0 && Image1Title != null && Image2Title != null && Communites!=null)
+        console.log(InterestsArray);
+				if(Image1.files.length > 0 && Image2.files.length > 0 && Image1Title != null && Image2Title != null  && InterestsArray.length > 0)
 				{
+            wait.style.display = "block"
 						Image1File = new Parse.File("Image1.png",Image1.files[0])
 						Image2File = new Parse.File("Image2.png",Image2.files[0])
             var quality =  80
@@ -348,18 +374,21 @@ app.controller("CreatePunch",function($scope){
 						Post.set("Image2Title",Image2Title);
 						Post.set("Punchers1",new Array())
 						Post.set("Punchers2",new Array())
-						var InterestsArray = Communites.split(",");
+						// var InterestsArray = Communites.split(",");
 						Post.set("TargetIntrests",InterestsArray);
 						Post.save(null,{
 							success : function (Post) {
 										$('#PunchModel').closeModal();
 										var $toastContent = $('<span> Posted successfully</span>');
 										Materialize.toast($toastContent, 5000);
-                    $('#CreatePunch')[0].reset();
+                    $('#CreatePunch').load(document.URL +  ' #CreatePunch');
+                    location.reload();
 							},
 							error: function (error) {
 								var $toastContent = $('<span>'+String(error)+'</span>');
 								Materialize.toast($toastContent, 5000);
+                wait.style.display = "none"
+                location.reload();
 							}
 						});
 				}

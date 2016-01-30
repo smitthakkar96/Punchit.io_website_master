@@ -393,7 +393,7 @@ function punchit(){
 }
 });
 </script>
-<div ng-controller="CreatePunch" style="overflow-y: auto;max-height:40px">
+<div ng-controller="CreatePunch" style="overflow-y: auto;max-height:40px" id="CreatePunch">
   <div class="fixed-action-btn" style="bottom: 45px; right: 44px;">
     <a class="btn-floating btn-large waves-effect waves-light btn modal-trigger" style="background-color:#ff4545" id="Punch" href="#PunchModel">
       <!--<img src="images/FloatingPunch1.png" style="height:inherit;width:inherit"/>-->
@@ -401,7 +401,7 @@ function punchit(){
     </a>
   </div>
   <div id="PunchModel" class="modal">
-    <form id="CreatePunch">
+    <form>
       <div class="modal-content">
         <div class="row">
           <div class="col s12">
@@ -442,8 +442,13 @@ function punchit(){
               </div>
             </div>
           </div>
-          <div class="col s12">
-            <input type="text" placeholder="Tag Communites" class="textcenter" id="Community" ng-model="Communites">
+          <div class="col s12" style="background-color:white">
+            <div class="col s5" ng-repeat="i in Interests">
+              <p>
+             <input type="checkbox" class="Interests" value="{a i a}" id="{a i a}"/>
+             <label for="{a i a}">{a i a}</label>
+            </p>
+            </div>
           </div>
           <div class="col s12">
             <div class="row" style="margin-top:1%;">
@@ -486,9 +491,11 @@ if($(window).width()<1000){
   $("#post_img2").css("height","300px")
 }
 $(function(){
-  $('#newPunches').click({
-    $("#newPunches").hide()
+  $('#newPunches').click(function(){
+    $('#newPunches').hide()
   })
+
+
 })
 </script>
 
