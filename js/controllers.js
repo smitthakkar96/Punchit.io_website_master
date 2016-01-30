@@ -342,7 +342,13 @@ app.controller("CreatePunch",function($scope,$filter){
 				var Post = new PostObject();
 				var Communites = $scope.Communites
         console.log(InterestsArray);
-				if(Image1.files.length > 0 && Image2.files.length > 0 && Image1Title != null && Image2Title != null  && InterestsArray.length > 0)
+        alert(Image1.files[0].size / 1000000)
+				if(Image1.files[0].size / 1000000 > 3 || Image2.files[0] / 1000000 > 3)
+        {
+          var $toastContent = $('<span>File size cannot be larger than 3 mbs</span>');
+					Materialize.toast($toastContent, 5000);
+        }
+        else if(Image1.files.length > 0 && Image2.files.length > 0 && Image1Title != null && Image2Title != null  && InterestsArray.length > 0 && Title != null)
 				{
             wait.style.display = "block"
 						Image1File = new Parse.File("Image1.png",Image1.files[0])
@@ -358,7 +364,6 @@ app.controller("CreatePunch",function($scope,$filter){
 
             var image1 = new Image();
             image1.src = $('#Preview2').attr('src');
-
 
             var target_img = jic.compress(image,quality,output_format).src;
             var target_img1 = jic.compress(image1,quality,output_format).src;
@@ -391,13 +396,14 @@ app.controller("CreatePunch",function($scope,$filter){
                 location.reload();
 							}
 						});
-				}
+        }
 				else
 				{
 					var $toastContent = $('<span>Please check and fill all the fields</span>');
 					Materialize.toast($toastContent, 5000);
 				}
-			}
+      }
+			// }
 });
 
 function uniq(a) {
