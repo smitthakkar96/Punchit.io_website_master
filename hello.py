@@ -81,6 +81,11 @@ def send_js(path):
 	print path
 	return send_from_directory('js', path)
 
+@app.route('/mobileLogin')
+def mobileLogin():
+    if session.get('session_token') is None:
+        return render_template('mlogin.html')
+
 @app.route('/css/<path:path>')
 def send_css(path):
 	print path

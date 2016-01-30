@@ -156,8 +156,6 @@ catch(e)
 var promise = PostService.GetPosts([])
 promise.then(
 function(Data){
-	console.log(Data.length);
-
 	$scope.posts = Data
 	$scope.backup = $scope.posts
 	$scope.PostsVisibility = false;
@@ -172,8 +170,12 @@ function(Data){
 			} finally {
 
 			}			 //spinner
-
-})
+},function(reason){
+  console.log(reason);
+},function (update) {
+  console.log("Update");
+  $scope.posts = update
+});
 
 	$scope.openComment = function(index) {
 		console.log("df");
@@ -303,7 +305,8 @@ function detectmob() {
 
 
 app.controller("CreatePunch",function($scope,$filter){
-
+    $scope.validLength = 50;
+    $scope.validTitleLength = 20;
   var intrestQuery = new Parse.Query('Intrestlist')
   intrestQuery.find({
     success:function(Interests){
@@ -736,18 +739,42 @@ function GetPosts(hashTag)
 							console.log(JSON.stringify(SinglePost));
 							SinglePost.Image1Title = SinglePost.get("Image1Title")
 							SinglePost.Image2Title = SinglePost.get("Image2Title")
+              var createdAt = SinglePost.get('createdAt')
+							var timeStamp = GetTimeStamp(createdAt)
+							SinglePost.set('TimeStamp',timeStamp);
+							SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
+							SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
+							
 							var user = SinglePost.get('By')
 							user.fetch({
 								success:function(myObject) {
 									console.log(JSON.stringify(myObject));
 								}
 							});
+              if(SinglePost.get('Votes1') > 0 || SinglePost.get('Votes2') > 0)
+              {
+                if(SinglePost.get('Punchers1').indexOf(Parse.User.current().id) > -1)
+                {
+                SinglePost.set('isVoted1',"block")
+                SinglePost.set('isVoted2',"none")
+                alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                }
 
-							var createdAt = SinglePost.get('createdAt')
-							var timeStamp = GetTimeStamp(createdAt)
-							SinglePost.set('TimeStamp',timeStamp);
-							SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
-							SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
+              else if(SinglePost.get('Punchers2').indexOf(Parse.User.current().id) > -1)
+                {
+                  SinglePost.set('isVoted1',"none")
+                  SinglePost.set('isVoted2',"block")
+                alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                }
+                else {
+                  SinglePost.set('isVoted1',"none")
+                  SinglePost.set('isVoted2',"none")
+                }
+              }
+              else {
+                SinglePost.set('isVoted1',"none")
+                SinglePost.set('isVoted2',"none")
+              }
 							$scope.posts.push(SinglePost)
 						}
 						$scope.PostsVisibility = false;
@@ -885,6 +912,24 @@ app.directive('myEnter', function () {
             }
         });
     };
+});
+
+app.directive('wmBlock', function ($parse) {
+    return {
+        scope: {
+          wmBlockLength: '='
+        },
+        link: function (scope, elm, attrs) {
+
+          elm.bind('keypress', function(e){
+
+            if(elm[0].value.length > scope.wmBlockLength){
+              e.preventDefault();
+              return false;
+            }
+          });
+        }
+    }
 });
 
 app.config(['$interpolateProvider', function($interpolateProvider) {

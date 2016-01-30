@@ -35,45 +35,47 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
               {
     						for(var i=0;i<data.length;i++)
     						{
-    							var SinglePost = data[i];
-    							SinglePost.Image1Title = SinglePost.get("Image1Title")
-    							SinglePost.Image2Title = SinglePost.get("Image2Title")
-    							var user = SinglePost.get('By')
+                  var SinglePost = data[i];
+                  SinglePost.Image1Title = SinglePost.get("Image1Title")
+                  SinglePost.Image2Title = SinglePost.get("Image2Title")
+    							var user = data[i].get('By')
     							user.fetch({
     								success:function(myObject) {
-                      var createdAt = SinglePost.get('createdAt')
-        							var timeStamp = Time.GetTimeStamp(createdAt)
-        							SinglePost.set('TimeStamp',timeStamp);
-        							SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
-        							SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
-                      deferred.resolve(Posts);
+                      // deferred.notify(Posts)
     								}
     							});
-    							if(SinglePost.get('Punchers1').length == 0)
+                  var createdAt = SinglePost.get('createdAt')
+                  var timeStamp = Time.GetTimeStamp(createdAt)
+                  SinglePost.set('TimeStamp',timeStamp);
+                  SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
+                  SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
+                  if(SinglePost.get('Votes1') > 0 || SinglePost.get('Votes2') > 0)
                   {
-                  SinglePost.set('isVoted1',"none")
-                  }
-                  if(SinglePost.get('Punchers2').length == 0)
-                  {
-                  SinglePost.set('isVoted2',"none")
-                  }
-                  if(SinglePost.get('Punchers1').indexOf(Parse.User.current().id) > -1)
-                  {
-                  SinglePost.set('isVoted1',"block")
-                  }
-                  else {
+                    if(SinglePost.get('Punchers1').indexOf(Parse.User.current().id) > -1)
+                    {
+                    SinglePost.set('isVoted1',"block")
                     SinglePost.set('isVoted2',"none")
-                  }
-                  if(SinglePost.get('Punchers2').indexOf(Parse.User.current().id) > -1)
-                  {
-                    SinglePost.set('isVoted2',"block")
-                  }
-                  else {
-                    SinglePost.set('isVoted2',"none")
-                  }
-    							Posts.push(SinglePost)
-    						}
+                    alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                    }
 
+                  else if(SinglePost.get('Punchers2').indexOf(Parse.User.current().id) > -1)
+                    {
+                      SinglePost.set('isVoted1',"none")
+                      SinglePost.set('isVoted2',"block")
+                    alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                    }
+                    else {
+                      SinglePost.set('isVoted1',"none")
+                      SinglePost.set('isVoted2',"none")
+                    }
+                  }
+                  else {
+                    SinglePost.set('isVoted1',"none")
+                    SinglePost.set('isVoted2',"none")
+                  }
+                  Posts.push(SinglePost)
+    						}
+                deferred.resolve(Posts);
     					}
     					else
               {

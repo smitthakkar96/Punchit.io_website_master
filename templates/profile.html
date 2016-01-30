@@ -16,7 +16,6 @@
 
 <!--Import materialize.css-->
     <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
-    <link rel="stylesheet" type="text/css" href="homepage_css.css">
 <!--Import jQuery before materialize.js-->
 <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
 <script type="text/javascript" src="js/materialize.min.js"></script>
@@ -138,7 +137,7 @@ $(document).ready(function(){
 	<div class="navbar-fixed row" ng-controller="myCtrl">
 	  <ul class="side-nav collection" id="mobile-demo">
 
-	      <li class="collection-item"><center><img src="{a ProfilePicture_url a}" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>
+	      <li class="collection-item"><center><img ng-src="{a ProfilePicture_url a}" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>
 	      <br/><b style="color:#ff4545">{a Name a}</b></center>
 	      </li>
 
@@ -182,7 +181,7 @@ $(document).ready(function(){
 	          <div class="col">
 	              <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown1'>
 	              <div class="chip" href="/Profile" style="margin-top:15px;width:120px;">
-	                <img src="{a ProfilePicture_url a}" class="profile-img responsive-img" style="height:inherit;">
+	                <img ng-src="{a ProfilePicture_url a}" class="profile-img responsive-img" style="height:inherit;">
 	                  <font class="right">{a Name a}</font>
 	              </div>
 	              </a>
@@ -225,12 +224,12 @@ $(document).ready(function(){
 	<div ng-controller="DetailsController">
 			<div style="position:relative;">
 
-				<img class="bg_foggy center" id="foggy" src="{a ProfilePicture a}" style="{a blur_img a} ;position:absolute;z-index:-1;"/>
+				<img class="bg_foggy center" id="foggy" ng-src="{a ProfilePicture a}" style="{a blur_img a} ;position:absolute;z-index:-1;"/>
 
 	<div class="row" style="color:#fff">
 		<!--<div class="section card col s10 m10" style="width:90%;margin-left:7%; margin-top:50px;">-->
 			<center>
-				<img class="circle responsive-img" id="ProfilePicture" src="{a ProfilePicture a}" style="height:200px;width:200px;border:{a color a} solid 1px"/></br/>
+				<img class="circle responsive-img" id="ProfilePicture" ng-src="{a ProfilePicture a}" style="height:200px;width:200px;border:{a color a} solid 1px"/></br/>
 				<span class="title">
 					<b style="color:{a color a};"><h3>{a Name a}</h3></b>
 				</span>
@@ -312,77 +311,82 @@ $(document).ready(function(){
 	</div>	-->
 	</div>
 </div>
+<!-- width:{a width a};margin-left:{a pcmargin a} -->
+<!-- id="main_card" -->
 	<div class="row" ng-controller="UserPunchesController">
 		<div class="col l12 s12">
 	<!--<div id="fullpage">-->
-	     <div class="section card col l8 s12 center" style="width:{a width a};margin-left:{a pcmargin a}" id="main_card" ng-repeat="SinglePost in posts" ng-hide="{a PostsVisibility a}">
-	      <div class="card-content content">
-	        <div class="row">
-	            <div class="col s12">
-	       <center class="row">
-	        <img class="circle responsive-img col s6" src="{a SinglePost.get('By').get('ProfilePicture').url() a}" style="height:50px;width:74px"/>
+	<div class="section card col l8 s12" id="main_card" style="width:{a width a};margin-left:{a pcmargin a}" id="main_card" ng-repeat="SinglePost in posts track by $index" ng-hide="{a PostsVisibility a}">
+		<div class="card-content content">
+			<div class="row">
+				<div class="col s12">
+					<center class="row">
+						<img class="circle responsive-img col s6" ng-src="{a SinglePost.get('By').get('ProfilePicture').url() a}" style="height: 50px;width:74px"/>
 
-	          <span class="col s6" style="margin-top:15px;">
-	            <a href="/Profile?id={a SinglePost.get('By').id a}" style="color:red;float:left">{a SinglePost.get('By').get('Ninja_name') a}</a>
-	          </span>
 
-	          <span style="float:right;color:grey;margin-top:15px;margin-right:1%;" class="s10">
-	            {a SinglePost.get('TimeStamp') a}
-	          </span>
-	       </center>
+						<span class="col s6" style="margin-top:15px;">
+							<a href="/Profile?id={a SinglePost.get('By').id a}" style="color:red;float:left">{a SinglePost.get('By').get('Ninja_name') a}</a>
+						</span>
 
-	           </div>
 
-	        <!-- Post Question -->
-	        <div style="margin-top:1%;" class="col s12">
-	       <p style="color:#989489;font-size:18px;text-align:left;margin-left:1%;">{a SinglePost.get('Title') a}</p>
+						<span style="float:right;color:grey;margin-top:15px;margin-right:1%;" class="s10">
+							{a SinglePost.get('TimeStamp') a}
+						</span>
+					</center>
 
-	        </div>
-	      </div>
-	          </div>
+				</div>
 
-	          <!-- Post images -->
-	    <div class="card-image" style="margin-left: 1%; margin-top:-2%;">
-	      <div class="row">
+				<!-- Post Question -->
+				<div style="margin-top:1%;" class="col s12 center">
+					<center>
+						<p style="color:#989489;font-size:18px;">{a SinglePost.get('Title') a}</p>
+					</center>
+				</div>
+			</div>
+		</div>
 
-	        <div class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:400px;background-image:url('images/background2.png');background-size:330px 500px;background-repeat:no-repeat;">
-							<img class="responsive-img right" src="images/post_tick.png" style="margin-top:-6.5%;left:22px;height:70px; width:70px;"/>
-	            <a ng-click="Punch($index,1)"><img class="responsive-img" src="{a SinglePost.get('Image1').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
-	        </div>
-	          <div class="col waves-effect waves-light" style="margin-left:1%;border:1px solid #989489;width:45%;padding:10px;height:400px;background-image:url('images/mirror_background2.jpg');background-size:330px 500px;background-repeat:no-repeat;">
-								<img class="responsive-img right" src="images/post_tick.png" style="margin-top:-7%;left:22px;height:70px; width:70px;"/>
-	              <a ng-click="Punch($index,2)"><img class="responsive-img" src="{a SinglePost.get('Image2').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
-	          </div>
+		<!-- Post images -->
+		<div class="card-image" style="margin-left: 1%; margin-top:-2%;">
+			<div class="row">
 
-	    </div>
-	         </div>
-	      <div class="card-content" style="margin-top:-5%;">
-	            <div class="row">
-	                <div class="col s6">
-	                    <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image1Title') a}</p>
-	                    <div style="background-color:#ff4545;color: #ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
-	                    <div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{a SinglePost.get('Punchers1').length a}</p></div>
-	                </div>
-	                <div class="col s6">
-	                    <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image2Title') a}</p>
-	                    <div style="background-color:#ff4545;color:#ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
-	                    <center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;">{a SinglePost.get('Punchers2').length a}</div></center>
-	                </div>
+				<div id="post_img1" class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:400px;background-image:url('images/background2.jpg');background-size:330px 500px;background-repeat:no-repeat;">
+					<img class="responsive-img right" src="images/post_tick.png" style="margin-top:-6.5%;left:22px;height:70px; width:70px;z-index:1;display:{a SinglePost.get('isVoted1') a}"/>
+					<a ng-click="Punch($index,1)"><img class="responsive-img" ng-src="{a SinglePost.get('Image1').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);max-width: 100%;max-height: 100%;"></a>
+				</div>
+				<div id="post_img2" class="col waves-effect waves-light" style="margin-left:1%;border:1px solid #989489;width:45%;padding:10px;height:400px;background-image:url('images/mirror_background2.jpg');background-size:330px 500px;background-repeat:no-repeat;">
+					<img class="responsive-img right" src="images/post_tick.png" style="margin-top:-7%;left:22px;height:70px; width:70px;z-index:1;display:{a SinglePost.get('isVoted2') a}"/>
+					<a ng-click="Punch($index,2)"><img class="responsive-img" ng-src="{a SinglePost.get('Image2').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;position:absolute;top: 50%;left: 50%;transform: translateX(-50%) translateY(-50%);max-width: 100%;max-height: 100%;"></a>
+				</div>
 
-	            </div>
-	      </div>
+			</div>
+		</div>
+		<div class="card-content" style="margin-top:-5%;">
+			<div class="row">
+				<div class="col s6">
+					<p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image1Title') a}</p>
+					<div style="background-color:#ff4545;color: #ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
+					<div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{a SinglePost.get('Punchers1').length a}</p></div>
+				</div>
+				<div class="col s6">
+					<p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image2Title') a}</p>
+					<div style="background-color:#ff4545;color:#ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
+					<center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;">{a SinglePost.get('Punchers2').length a}</div></center>
+				</div>
 
-	      <!-- share comment icons -->
-	      <div class="row">
+			</div>
+		</div>
 
-	        <div class="col s2 l1">
-	          <a href=""><img src="images/share.png" style="margin-left:7px;height:inherit;width:70px;" id="share"/></a>
-	        </div>
-	        <div class="col s2 l1">
-	          <a href="" class="modal-trigger"><img src="images/comment.png" style="height:inherit;width:70px;margin-left:10px;" id="comment" ng-click="openComment($index)"/></a>
-	        </div>
-	      </div>
-	          </div>
+		<!-- share comment icons -->
+		<div class="row" style="margin-top:-5%">
+
+			<div class="col s2 l1">
+				<a href=""><img src="images/share.png" style="margin-left:7px;height:inherit;width:70px;" id="share"></a>
+			</div>
+			<div class="col s2 l1">
+				<a href="" class="modal-trigger"><img src="images/comment.png" style="height:inherit;width:70px;margin-left:10px;" id="comment" ng-click="openComment($index)"></a>
+			</div>
+		</div>
+	</div>
 	        <!-- #############################Load more##########################################  -->
 	        <div class="col l12" id="spinner">
 	          <center>
@@ -397,7 +401,7 @@ $(document).ready(function(){
 
 	            <ul class="collection">
 	                <li class="collection-item avatar" ng-repeat="comment in comments">
-	                  <img src="{a comment.get('User').get('ProfilePicture').url() a}" alt="" class="circle" style="border:1px solid #ff4545;">
+	                  <img ng-src="{a comment.get('User').get('ProfilePicture').url() a}" alt="" class="circle" style="border:1px solid #ff4545;">
 	                  <span class="title"><a href="/Profile?id={a comment.get('User').id a}"><b style="color:#ff4545">{a comment.get('User').get('Ninja_name') a}</b></a></span>
 	                  <p class="commentText">{a comment.get("comment") a}<br>
 	                  </p>

@@ -285,11 +285,12 @@
 $(function(){
 	var width=$(window).width();
 	//alert(width);
-	
+
 	var login_class=$("#login_a").attr("class");
 	if(width < 1000){
 		if(login_class == "active"){
 			$("#main_card").css("height","1450px");
+      windows.location = "/mobileLogin"
 		}else{
 			alert("false");
 		}

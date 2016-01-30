@@ -4,8 +4,8 @@
       <title>Punchit.io</title>
       <!--Import Google Icon Font-->
       <meta charset="UTF-8">
-      <meta name="description" content="{a SinglePost.get('Title') a}">
-      <meta name="author" content="{a SinglePost.get('By').get('Name') a}">
+      <meta name="description" content="{a SinglePost.get('Title') a}" ng-if="SinglePost.get('Title')">
+      <meta name="author" content="{a SinglePost.get('By').get('Name') a}" ng-if="SinglePost.get('By').get('Name')">
       <meta name="Punchit.io">
       <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
       <meta property="og:type"               content="article" />

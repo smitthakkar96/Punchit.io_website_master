@@ -1,0 +1,10 @@
+import requests
+import sys
+
+f = open('Image1.jpg', 'wb')
+url1 = sys.argv[0]
+f.write(requests.get(url1).content)
+f1 = open('Image2.jjp', 'wb')
+url2 = sys.argv[0]
+f1.write(requests.get(url2).content)
+f1.close()
