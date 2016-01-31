@@ -23,7 +23,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <body cz-shortcut-listen="true" ng-controller="share">
+    <body cz-shortcut-listen="true">
       <!--Import jQuery before materialize.js-->
       <script src="/js/jquery-2.1.1.min.js" type="text/javascript"></script>
       <script type="text/javascript" src="/js/materialize.min.js"></script>
@@ -117,7 +117,7 @@
   </nav>
 </div>
 <center>
-   <div class="section card col l8 s12" style="width:{a width a};" id="main_card">
+   <div ng-controller="share" class="section card col l8 s12" style="width:{a width a};" id="main_card">
     <div class="card-content content">
       <div class="row">
           <div class="col s12">
