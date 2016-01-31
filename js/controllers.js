@@ -906,12 +906,50 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
     console.log(objectId)
     console.log(objectId);
-    var myprom = PostService.GetSinglePost(objectId)
-    myprom.then(function(Data){
-            $scope.SinglePost = Data;
-            $scope.test = "hello world"
-            console.log($scope.SinglePost)
-      })
+    //var myprom = PostService.GetSinglePost(objectId)
+    //myprom.then(function(Data){
+    //        $scope.SinglePost = Data;
+    //        $scope.test = "hello world"
+    //        console.log($scope.SinglePost)
+    //  })
+         Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
+       var posts = Parse.Object.extend("Posts")
+       var Query = new  Parse.Query(posts)
+       Query.equalTo("objectId",objectId)
+       Query.include("_User")
+       Query.descending("createdAt")
+       Query.limit(5);
+       Query.find({
+         success : function (data) {
+             if(data !=null && data != 'undefined')
+             {
+               for(var i=0;i<data.length;i++)
+               {
+                 var SinglePost = data[i];
+                 SinglePost.Image1Title = SinglePost.get("Image1Title")
+                 SinglePost.Image2Title = SinglePost.get("Image2Title")
+                 var user = SinglePost.get('By')
+                 user.fetch({
+                   success:function(myObject) {
+                     var createdAt = SinglePost.get('createdAt')
+                     var timeStamp = Time.GetTimeStamp(createdAt)
+                     SinglePost.set('TimeStamp',timeStamp);
+                     SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
+                     SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
+                     $scope.SinglePost = SinglePost
+                   }
+                 });
+
+               }
+
+             }
+         },
+         error : function (error) {
+   
+         }
+       })
+    
+   
   }
 }]);
 
