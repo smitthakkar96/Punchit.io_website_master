@@ -17,7 +17,7 @@ app.filter('unique', function() {
    };
 });
 
-app.controller('myCtrl',['$scope','$http','Model',function($scope,$http,Model) {
+app.controller('myCtrl',['$scope','$http','$Model',function($scope,$http,Model) {
 	$scope.text = "ddd";
 	// $scope.Data = Data
 	Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
@@ -911,6 +911,7 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
       console.log(JSON.stringify(Data));
             // unshift(Data[0])
             $scope.SinglePost = Data[0]
+            $scope.$apply()
             console.log($scope.posts);
       })
   }
