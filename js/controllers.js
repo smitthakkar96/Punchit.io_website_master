@@ -908,7 +908,7 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
     console.log(objectId);
     var myprom = PostService.GetSinglePost(objectId)
     myprom.then(function(Data){
-            $scope.SinglePost = Data[0];
+            $scope.SinglePost = Data;
             $scope.test = "hello world"
             console.log($scope.SinglePost)
       })
