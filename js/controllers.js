@@ -911,7 +911,6 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
       console.log(JSON.stringify(Data));
             // unshift(Data[0])
             $scope.SinglePost = Data[0]
-            $scope.$apply()
             console.log($scope.posts);
       })
   }
