@@ -900,7 +900,7 @@ function detectmob() {
 }
 })
 
-app.controller('share',['$scope','PostService',function($scope,PostService) {
+app.controller('share',['$scope','PostService','Time',function($scope,PostService,Time) {
   if(location.href.split('/').indexOf("share") != -1)
   {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
