@@ -36,7 +36,7 @@
 
 <div class="navbar-fixed row" ng-controller="myCtrl">
   <ul class="side-nav collection" id="mobile-demo">
-
+    
       <li class="collection-item"><center><img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>
       <br/><b style="color:#ff4545">Ninja</b></center>
       </li>
@@ -146,7 +146,7 @@
         <!-- Post images -->
   <div class="card-image" style="margin-left: 1%; margin-top:-2%;">
     <div class="row">
-
+      {a SinglePost.get('Image1') a}
       <div class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:300px;background-image:url('/images/FinalBackground2.png');">
           <a><img class="responsive-img" ng-src="{a SinglePost.get('Image1').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
       </div>
