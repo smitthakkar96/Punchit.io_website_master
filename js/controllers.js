@@ -346,7 +346,7 @@ app.controller("CreatePunch",function($scope,$filter){
 				var Communites = $scope.Communites
         console.log(InterestsArray);
         alert(Image1.files[0].size / 1000000)
-				if(Image1.files[0].size / 1000000 > 3 || Image2.files[0] / 1000000 > 3)
+	if(Image1.files[0].size / 1000000 > 3 || Image2.files[0] / 1000000 > 3)
         {
           var $toastContent = $('<span>File size cannot be larger than 3 mbs</span>');
 					Materialize.toast($toastContent, 5000);
@@ -354,9 +354,9 @@ app.controller("CreatePunch",function($scope,$filter){
         else if(Image1.files.length > 0 && Image2.files.length > 0 && Image1Title != null && Image2Title != null  && InterestsArray.length > 0 && Title != null)
 				{
             wait.style.display = "block"
-						Image1File = new Parse.File("Image1.png",Image1.files[0])
-						Image2File = new Parse.File("Image2.png",Image2.files[0])
-            var quality =  80
+	    Image1File = new Parse.File("Image1.png",Image1.files[0])
+	    Image2File = new Parse.File("Image2.png",Image2.files[0])
+            var quality =  60
             // output file format (jpg || png)
             output_format = 'jpg'
             //This function returns an Image Object
