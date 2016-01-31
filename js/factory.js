@@ -913,7 +913,7 @@ app.controller('share',function($scope,$http,PostService,Model,Search) {
             console.log($scope.posts);
       })
   }
-}]);
+});
 
 app.directive('myEnter', function () {
     return function (scope, element, attrs) {
