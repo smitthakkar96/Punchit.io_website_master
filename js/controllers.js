@@ -901,9 +901,8 @@ function detectmob() {
 })
 
 app.controller('share',['$scope','PostService','Time',function($scope,PostService,Time) {
-  $scope.init = function(){
-  	console.log(location.href.split('/').indexOf("share"))
-  	if(location.href.split('/').indexOf("share") != -1)
+ 
+  if(location.href.split('/').indexOf("share") != -1)
   {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
     console.log(objectId)
@@ -952,9 +951,6 @@ app.controller('share',['$scope','PostService','Time',function($scope,PostServic
    
          }
        })
-    
-   $scope.init();
-  }
   }
 }]);
 
