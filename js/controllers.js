@@ -911,15 +911,15 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
       console.log(JSON.stringify(Data));
             // unshift(Data[0])
             $scope.SinglePost = Data[0];
-            console.log($scope.posts);
-            try
-            {
-            	$scope.$apply() 
-            }
-            catch(err)
-            {
-            	console.log(err)
-            }
+            //console.log($scope.posts);
+            //try
+            //{
+            //	//$scope.$apply() 
+            //}
+            //catch(err)
+            //{
+            //	console.log(err)
+            //}
       })
   }
 }]);
