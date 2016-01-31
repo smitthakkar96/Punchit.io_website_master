@@ -912,6 +912,14 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
             // unshift(Data[0])
             $scope.SinglePost = Data[0];
             console.log($scope.posts);
+            try
+            {
+            	$scope.$apply() 
+            }
+            catch(err)
+            {
+            	console.log(err)
+            }
       })
   }
 }]);
