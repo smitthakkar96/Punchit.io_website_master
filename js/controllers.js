@@ -356,7 +356,7 @@ app.controller("CreatePunch",function($scope,$filter){
             wait.style.display = "block"
 	    Image1File = new Parse.File("Image1.png",Image1.files[0])
 	    Image2File = new Parse.File("Image2.png",Image2.files[0])
-            var quality =  60
+            var quality =  40
             // output file format (jpg || png)
             output_format = 'jpg'
             //This function returns an Image Object
