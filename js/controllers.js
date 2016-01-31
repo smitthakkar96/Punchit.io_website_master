@@ -904,6 +904,7 @@ app.controller('share',['$scope','PostService',function($scope,PostService) {
   if(location.href.split('/').indexOf("share") != -1)
   {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
+    console.log(objectId)
     console.log(objectId);
     var myprom = PostService.GetSinglePost(objectId)
     myprom.then(function(Data){
