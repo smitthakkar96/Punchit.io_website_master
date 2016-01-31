@@ -345,8 +345,8 @@ app.controller("CreatePunch",function($scope,$filter){
 				var Post = new PostObject();
 				var Communites = $scope.Communites
         console.log(InterestsArray);
-        alert(Image1.files[0].size / 1000000)
-	if(Image1.files[0].size / 1000000 > 3 || Image2.files[0] / 1000000 > 3)
+        // alert(Image1.files[0].size / 1000000)
+	if(Image1.files[0].size / 1000000 > 5 || Image2.files[0] / 1000000 > 5)
         {
           var $toastContent = $('<span>File size cannot be larger than 3 mbs</span>');
 					Materialize.toast($toastContent, 5000);
