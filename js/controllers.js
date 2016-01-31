@@ -744,7 +744,7 @@ function GetPosts(hashTag)
 							SinglePost.set('TimeStamp',timeStamp);
 							SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
 							SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
-							
+
 							var user = SinglePost.get('By')
 							user.fetch({
 								success:function(myObject) {
@@ -899,6 +899,21 @@ function detectmob() {
   }
 }
 })
+
+app.controller('share',['$scope','PostService',function($scope,$http,Data) {
+  if(location.href.split('/').indexOf("share") != -1)
+  {
+    var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
+    console.log(objectId);
+    var myprom = PostService.GetSinglePost(objectId)
+    myprom.then(function(Data){
+      console.log(JSON.stringify(Data));
+            // unshift(Data[0])
+            $scope.SinglePost = Data[0]
+            console.log($scope.posts);
+      })
+  }
+}]);
 
 app.directive('myEnter', function () {
     return function (scope, element, attrs) {
