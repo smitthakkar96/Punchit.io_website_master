@@ -286,7 +286,14 @@ app.factory('GetFacebookFriends',['$http','$q',function($http,$q){
   return{
     GetFriends : function(){
       var deferred = $q.defer()
+      try
+      {
       var access_token = Parse.User.current().get('authData')['facebook']["access_token"]
+      }
+      catch(err)
+      {
+      	
+      }
       if(access_token != null)
       {
       $http.get('https://graph.facebook.com/me/friends?access_token=' + access_token).then(function(response){
