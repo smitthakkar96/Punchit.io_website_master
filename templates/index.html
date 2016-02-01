@@ -499,11 +499,11 @@ $(function(){
   $('#newPunches').click(function(){
     $('#newPunches').hide()
   })
-$('#FACEBOOK').css("share","none")
-    $('#TWITTER').css("share","none")
+$('#FACEBOOK').hide()
+    $('#TWITTER').hide()
     $('share_btn').click(function(){
-      $('#FACEBOOK').css("share","block")
-      $('#TWITTER').css("share","block")
+      $('#FACEBOOK').toogle()
+      $('#TWITTER').toogle()
     })
 
 })
