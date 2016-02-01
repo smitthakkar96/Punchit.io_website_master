@@ -224,7 +224,7 @@ app.factory('Search',['$q','Time',function($q,Time){
                     {
                     SinglePost.set('isVoted1',"block")
                     SinglePost.set('isVoted2',"none")
-                    //alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                    alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
                     }
 
                   else if(SinglePost.get('Punchers2').indexOf(Parse.User.current().id) > -1)
