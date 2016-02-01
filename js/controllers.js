@@ -935,7 +935,7 @@ app.controller('share',['$scope','PostService','Time',function($scope,PostServic
                      SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
                      $scope.SinglePost = SinglePost
                      console.log($scope.SinglePost)
-                    // $scope.$apply()
+                     $scope.$apply()
                    }
                  });
 
