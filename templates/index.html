@@ -498,9 +498,9 @@ if($(window).width()<1000){
 $(function(){
   $('#newPunches').click(function(){
     $('#newPunches').hide()
-    $('.SHARE').hide()
+    $('.SHARE').css("share","none")
     $('share_btn').click(function(){
-      $('.SHARE').toogle();
+      $('.SHARE').css("share","block")
     })
   })
 
