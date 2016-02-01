@@ -219,6 +219,8 @@ app.factory('Search',['$q','Time',function($q,Time){
                 var timeStamp = Time.GetTimeStamp(createdAt)
                 SinglePost.set('TimeStamp',timeStamp);
                 console.log(SinglePost.get('Punchers1'))
+                SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
+                SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
                 if(SinglePost.get('Votes1') > 0 || SinglePost.get('Votes2') > 0)
                   {
                     if(SinglePost.get('Punchers1').indexOf(Parse.User.current().id) > -1)
