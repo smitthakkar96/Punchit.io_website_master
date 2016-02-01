@@ -14,13 +14,13 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
         {
           var posts = Parse.Object.extend("Posts")
     		var Query = new  Parse.Query(posts)
-        console.log(notContainedIn.length)
+        // console.log(notContainedIn.length)
         Query.containedIn("TargetIntrests",Interests)
     		if(notContainedIn.length > 0){
     			var ExistingObjectIds=new Array();
     			for(var i=0;i<notContainedIn.length;i++)
     			{
-            console.log(notContainedIn[i].id)
+            //console.log(notContainedIn[i].id)
     				ExistingObjectIds[i] = notContainedIn[i].id;
     			}
     			Query.notContainedIn("objectId",ExistingObjectIds)
@@ -55,14 +55,14 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
                     {
                     SinglePost.set('isVoted1',"block")
                     SinglePost.set('isVoted2',"none")
-                    alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                    //alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
                     }
 
                   else if(SinglePost.get('Punchers2').indexOf(Parse.User.current().id) > -1)
                     {
                       SinglePost.set('isVoted1',"none")
                       SinglePost.set('isVoted2',"block")
-                    alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                    //alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
                     }
                     else {
                       SinglePost.set('isVoted1',"none")
@@ -193,7 +193,7 @@ app.factory('Search',['$q','Time',function($q,Time){
       var deferred = $q.defer();
       var SearchResults = [];
       KeyWord = KeyWord.replace('#','').trim()
-      console.log(KeyWord);
+      //console.log(KeyWord);
       if(KeyWord != null && KeyWord != 'undefined')
       {
         var SearchInImage1Title = new Parse.Query("Posts")
@@ -241,7 +241,7 @@ app.factory('Search',['$q','Time',function($q,Time){
 app.factory('FetchInterests',['$http','$q',function($http,$q){
   return{
     Fetch : function(){
-      console.log("Hear")
+      //console.log("Hear")
       var Query = new Parse.Query("Intrestlist");
       var deferred = $q.defer()
     	$http.get('/GetUserInterests').then(function(response) {
@@ -325,7 +325,7 @@ app.factory('GetFacebookFriends',['$http','$q',function($http,$q){
               }
               deferred.resolve(Data)
             },error:function(Error){
-              console.log(Error);
+            console.log(Error);
             }
           })
 
@@ -348,7 +348,7 @@ app.factory('GetFriendsFromInterests',['$http','$q',function($http,$q){
       var deferred = $q.defer()
       var Data = []
 
-      console.log("hear");
+      //console.log("hear");
       $http.get('/GetUserInterests').then(function(response) {
         var Interests = response.data.result
         // Interests = Interests.split(',')
