@@ -41,7 +41,7 @@ app.factory('PostService',['$http','Time','$q',function ($http,Time,$q) {
     							var user = data[i].get('By')
     							user.fetch({
     								success:function(myObject) {
-                							  deferred.notify(Posts)
+                							  //deferred.notify(Posts)
     								}
     							});
                   var createdAt = SinglePost.get('createdAt')
