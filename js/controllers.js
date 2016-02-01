@@ -901,18 +901,14 @@ function detectmob() {
 })
 
 app.controller('share',['$scope','PostService','Time',function($scope,PostService,Time) {
- 
-if(location.href.split('/').indexOf("share") != -1)
+ init();
+ function init()
+ {
+ 	if(location.href.split('/').indexOf("share") != -1)
   {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
     console.log(objectId)
     console.log(objectId);
-    //var myprom = PostService.GetSinglePost(objectId)
-    //myprom.then(function(Data){
-    //        $scope.SinglePost = Data;
-    //        $scope.test = "hello world"
-    //        console.log($scope.SinglePost)
-    //  })
          Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
        var posts = Parse.Object.extend("Posts")
        var Query = new  Parse.Query(posts)
@@ -952,6 +948,7 @@ if(location.href.split('/').indexOf("share") != -1)
          }
        })
   }
+ }
  }
 }]);
 
