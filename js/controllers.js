@@ -981,6 +981,7 @@ app.directive('wmBlock', function ($parse) {
             }
           });
         }
+    }
 });
 
 app.config(['$interpolateProvider', function($interpolateProvider) {
