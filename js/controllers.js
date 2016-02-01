@@ -901,9 +901,8 @@ function detectmob() {
 })
 
 app.controller('share',['$scope','PostService','Time',function($scope,PostService,Time) {
- $scope.init = function init()
- {
- 	  if(location.href.split('/').indexOf("share") != -1)
+ 
+if(location.href.split('/').indexOf("share") != -1)
   {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
     console.log(objectId)
@@ -985,7 +984,6 @@ app.directive('wmBlock', function ($parse) {
             }
           });
         }
-    }
 });
 
 app.config(['$interpolateProvider', function($interpolateProvider) {
