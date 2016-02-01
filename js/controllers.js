@@ -948,7 +948,7 @@ app.controller('share',['$scope','PostService','Time',function($scope,PostServic
          }
        })
   }
- }
+ //}
  }
 }]);
 
