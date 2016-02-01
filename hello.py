@@ -11,6 +11,7 @@ from datetime import timedelta
 from flask import session, app
 import os
 import pusher
+import getPost
 
 settings_local.initParse()
 app = Flask(__name__)
@@ -157,14 +158,14 @@ def Select_Interests():
     else:
         return render_template('login.html')
 
+@app.route('/share/<path:path>')
+def share(path):
+    SinglePost = getPost.getSinglePost(path)
+    return render_template('Posts.html',SinglePost=SinglePost)
+
 @app.route('/Settings')
 def Settings():
 	return render_template('Settings.html')
-
-@app.route('/share/<path>')
-def Posts(path):
-    return render_template('Posts.html')
-
 
 port = int(os.environ.get('PORT', 5000))
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
