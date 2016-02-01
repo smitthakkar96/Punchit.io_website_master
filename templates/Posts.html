@@ -4,7 +4,7 @@
       <title>Punchit.io</title>
       <!--Import Google Icon Font-->
       <meta charset="UTF-8">
-      <meta name="description" content="{{str(SinglePost.Title)}}">
+      <meta name="description" content="{{SinglePost.Title | string()}}">
       <!-- <meta name="author" content="{a SinglePost.get('By').get('Name') a}" ng-if="SinglePost.get('By').get('Name')"> -->
       <meta name="Punchit.io">
       <!-- <meta property="og:url"                content="http://www.nytimes.com/2015/02/19/arts/international/when-great-minds-dont-think-alike.html" />
@@ -137,7 +137,7 @@
 
       <!-- Post Question -->
       <div style="margin-top:1%;" class="col s12">
-     <p style="color:#989489;font-size:18px;text-align:left;margin-left:1%;">{{str(SinglePost.Title)}}</p>
+     <p style="color:#989489;font-size:18px;text-align:left;margin-left:1%;">{{SinglePost.Title | string()}}</p>
 
       </div>
     </div>
@@ -148,10 +148,10 @@
     <div class="row">
 
       <div class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:300px;background-image:url('/images/FinalBackground2.png');">
-          <a><img class="responsive-img" src="{{str(SinglePost.Image1.url)}}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
+          <a><img class="responsive-img" src="{{SinglePost.Image1.url | string()}}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
       </div>
         <div class="col waves-effect waves-light" style="margin-left:1%;border:1px solid #989489;width:45%;padding:10px;height:300px;background-image:url('/images/FinalBackground2.png');">
-            <a><img class="responsive-img" ng-src="{{str(SinglePost.Image1.url)}}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
+            <a><img class="responsive-img" ng-src="{{SinglePost.Image1.url | string()}}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
         </div>
 
   </div>
@@ -159,12 +159,12 @@
     <div class="card-content" style="margin-top:-5%;">
           <div class="row">
               <div class="col s6">
-                  <p style="text-align:center;font-size:100%;color:#ff4545">{{str(SinglePost.Image1Title)}}</p>
+                  <p style="text-align:center;font-size:100%;color:#ff4545">{{SinglePost.Image1Title | string()}}</p>
                   <div style="background-color:#ff4545;color: #ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
                   <div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{{len(SinglePost.Punchers1)}}</p></div>
               </div>
               <div class="col s6">
-                  <p style="text-align:center;font-size:100%;color:#ff4545">{{str(SinglePost.Image2Title)}}</p>
+                  <p style="text-align:center;font-size:100%;color:#ff4545">{{SinglePost.Image2Title | string()}}</p>
                   <div style="background-color:#ff4545;color:#ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
                   <center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;">{{len(SinglePost.Punchers2)}}</div></center>
               </div>
