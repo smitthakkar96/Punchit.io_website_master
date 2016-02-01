@@ -498,12 +498,13 @@ if($(window).width()<1000){
 $(function(){
   $('#newPunches').click(function(){
     $('#newPunches').hide()
-    $('.SHARE').css("share","none")
-    $('share_btn').click(function(){
-      $('.SHARE').css("share","block")
-    })
   })
-
+$('#FACEBOOK').css("share","none")
+    $('#TWITTER').css("share","none")
+    $('share_btn').click(function(){
+      $('#FACEBOOK').css("share","block")
+      $('#TWITTER').css("share","block")
+    })
 
 })
 </script>
