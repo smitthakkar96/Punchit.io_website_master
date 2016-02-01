@@ -23,14 +23,14 @@ app.controller('myCtrl',['$scope','$http','Model',function($scope,$http,Model) {
 	Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
 	$http.get('/GetSessionToken')
 	.then(function(response) {
-		console.log(response.data);
+		// console.log(response.data);
 	Parse.User.become(response.data)
 	})
 	var current_user = Parse.User.current()
 	$scope.Name = current_user.get("Ninja_name")
 	$scope.ProfilePicture_url = current_user.get("ProfilePicture").url();
 		$scope.logout = function() {
-			console.log("clicked")
+			// console.log("clicked")
 				$http({
 					method: 'GET',
 						url: '/logout'
@@ -66,7 +66,7 @@ catch(e)
 	channel.bind('NewUpdate', function(data) {
 	var prom = PostService.GetSinglePost(data.message)
 	prom.then(function(newPost){
-		console.log(JSON.stringify(newPost));
+		// console.log(JSON.stringify(newPost));
 		Array.prototype.insert = function (index, item) {
 		  this.splice(index, 0, item);
 		};
@@ -75,19 +75,19 @@ catch(e)
           // unshift(Data[0])
           // ($scope.$$phase || $scope.$root.$$phase) ? unshift() : $scope.$apply(unshift);
           $scope.posts.unshift(newPost)
-          console.log($scope.posts);
+          //console.log($scope.posts);
     })
 	})
     if(location.href.split('/').indexOf("share") != -1)
     {
       var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
-      console.log(objectId);
+      //console.log(objectId);
       var myprom = PostService.GetSinglePost(objectId)
       myprom.then(function(Data){
-        console.log(JSON.stringify(Data));
+        // console.log(JSON.stringify(Data));
               // unshift(Data[0])
               $scope.SinglePost = Data[0]
-              console.log($scope.posts);
+              //console.log($scope.posts);
         })
     }
 
@@ -166,25 +166,25 @@ function(Data){
 				var LoadMore = document.getElementById('LoadMore')
 				LoadMore.style.display = 'block'
 			} catch (e) {
-				console.log(e);
+				// console.log(e);
 			} finally {
 
 			}			 //spinner
 },function(reason){
-  console.log(reason);
+  //console.log(reason);
 },function (update) {
-  console.log("Update");
+  //console.log("Update");
   $scope.posts = update
 });
 
 	$scope.openComment = function(index) {
-		console.log("df");
+		// console.log("df");
 		$('#modal1').openModal();
 		GetComments($scope.posts[index].id)
 
 	}
 	$scope.LoadMore = function () {
-		console.log("clicked");
+		// console.log("clicked");
 		//spinner
 		var spinner = document.getElementById('spinner')
 		spinner.style.display = 'block'
@@ -193,7 +193,7 @@ function(Data){
 		LoadMore.style.display = 'none'
 		var promise = PostService.GetPosts($scope.posts)
 		promise.then(function(Data){
-			console.log(Data)
+			// console.log(Data)
 		  LoadMore = document.getElementById('LoadMore')
 			LoadMore.style.display = 'block'
 			spinner.style.display = "none"
@@ -205,7 +205,7 @@ function(Data){
 
 					Parse.Cloud.run("TapTap", {which:which,userObjID:current_user.id,objectId:objectId},{
 						success:function(response) {
-							console.log(JSON.stringify(response));
+							// console.log(JSON.stringify(response));
               if(which==1)
               {
                 response.set('isVoted1',"block")
@@ -219,7 +219,7 @@ function(Data){
 							$scope.$apply()
 						},
 						error : function(error) {
-							console.log(error);
+							// console.log(error);
 						}
 					})
 		}
@@ -279,7 +279,7 @@ function GetComments(objectId)
 						$scope.$apply()
 				},
 				error : function (error) {
-					console.log(error);
+					// console.log(error);
 				}
 			})
 }
@@ -310,7 +310,7 @@ app.controller("CreatePunch",function($scope,$filter){
   var intrestQuery = new Parse.Query('Intrestlist')
   intrestQuery.find({
     success:function(Interests){
-    console.log(Interests);
+    //console.log(Interests);
     var list = [];
     for(var i=0;i<Interests.length;i++)
     {
@@ -326,7 +326,7 @@ app.controller("CreatePunch",function($scope,$filter){
     var InterestsArray = []
     var cboxes = $('.Interests');
     var len = cboxes.length;
-    console.log(cboxes);
+    //console.log(cboxes);
     var InterestsArray = [];
     $.each($("input[class='Interests']:checked"), function(){
         InterestsArray.push($(this).val());
@@ -344,7 +344,7 @@ app.controller("CreatePunch",function($scope,$filter){
 				var PostObject = Parse.Object.extend('Posts')
 				var Post = new PostObject();
 				var Communites = $scope.Communites
-        console.log(InterestsArray);
+        // console.log(InterestsArray);
         // alert(Image1.files[0].size / 1000000)
 	if(Image1.files[0].size / 1000000 > 5 || Image2.files[0] / 1000000 > 5)
         {
@@ -360,7 +360,7 @@ app.controller("CreatePunch",function($scope,$filter){
             // output file format (jpg || png)
             output_format = 'jpg'
             //This function returns an Image Object
-            console.log(Image1.files[0]);
+            //console.log(Image1.files[0]);
             // console.log($('#Preview1').attr('src'));
             var image = new Image();
             image.src = $('#Preview1').attr('src');
@@ -489,7 +489,7 @@ function detectmob() {
 		User.id = objectId
 		User.fetch({
 			success : function (usr) {
-				console.log("----Name ==" + usr.get("Name"))
+				// console.log("----Name ==" + usr.get("Name"))
 				$scope.Name = User.get("Name")
 				$scope.Ninja_name = User.get("Ninja_name")
 				$scope.ProfilePicture = User.get("ProfilePicture").url()
@@ -529,7 +529,7 @@ function detectmob() {
 	GetFollowersQuery.equalTo("Following",User)
 	GetFollowersQuery.find({
 		success : function (Followers) {
-			console.log(Followers.length);
+			// console.log(Followers.length);
 			$scope.Followers = Followers.length
 			$scope.$apply()
 		}
@@ -597,10 +597,10 @@ function CheckIfIamFollowing()
 			{
 				// Unfollow : remove
 				// Follow :  person_add
-				console.log("Follower = " + Following[i].get("Follower").id + "Following =" + Following[i].get("Following").id);
+				// console.log("Follower = " + Following[i].get("Follower").id + "Following =" + Following[i].get("Following").id);
 				if(Following[i].get("Follower").id == Parse.User.current().id && Following[i].get("Following").id == User.id)
 				{
-					console.log("Yahh is Following");
+					// console.log("Yahh is Following");
 					$scope.isFollowing = "UnFollow";
 					$scope.icon = "-UnFollow"
 					$scope.objectIdOfFollowObject = Following[i].id;
@@ -670,14 +670,14 @@ app.controller('UserPunchesController',function($scope,$http,Data) {
 	$scope.posts = new Array()
 	$scope.PostsVisibility = true
 	$scope.openComment = function(index) {
-		console.log("df");
+		// console.log("df");
 		$('#modal1').openModal();
 		GetComments($scope.posts[index].id)
 
 	}
 	$scope.LoadMore = function () {
-		console.log("clicked");
-		//spinner
+		// console.log("clicked");
+		// spinner
 		var spinner = document.getElementById('spinner')
 		spinner.style.display = 'block'
 		GetPosts()
@@ -686,7 +686,7 @@ app.controller('UserPunchesController',function($scope,$http,Data) {
 	Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
 	$http.get('/GetSessionToken')
 	.then(function(response) {
-		console.log(response.data);
+		// console.log(response.data);
 	Parse.User.become(response.data)
 	GetPosts()
 	})
@@ -697,12 +697,12 @@ app.controller('UserPunchesController',function($scope,$http,Data) {
 
 					Parse.Cloud.run("TapTap", {which:which,userObjID:current_user.id,objectId:objectId},{
 						success:function(response) {
-							console.log(JSON.stringify(response));
+							// console.log(JSON.stringify(response));
 							$scope.posts[index] = response
 							$scope.$apply()
 						},
 						error : function(error) {
-							console.log(error);
+							// console.log(error);
 						}
 					})
 		}
@@ -716,14 +716,14 @@ function GetPosts(hashTag)
 		Query.equalTo("By",User)
 
 		if($scope.posts.length > 0){
-			console.log("load more");
+			// console.log("load more");
 			var ExistingObjectIds=new Array();
 			for(var i=0;i<$scope.posts.length;i++)
 			{
-				console.log($scope.posts[i].id);
+				// console.log($scope.posts[i].id);
 				ExistingObjectIds[i] = $scope.posts[i].id;
 			}
-			console.log(ExistingObjectIds);
+			// console.log(ExistingObjectIds);
 			Query.notContainedIn("objectId",ExistingObjectIds)
 		}
 		Query.descending("createdAt")
@@ -732,11 +732,11 @@ function GetPosts(hashTag)
 					Data.Value = data.length
 					if(data !=null && data != 'undefined'){
 						// $scope.posts=data
-						console.log(typeof($scope.post));
+						// console.log(typeof($scope.post));
 						for(var i=0;i<data.length;i++)
 						{
 							var SinglePost = data[i];
-							console.log(JSON.stringify(SinglePost));
+							// console.log(JSON.stringify(SinglePost));
 							SinglePost.Image1Title = SinglePost.get("Image1Title")
 							SinglePost.Image2Title = SinglePost.get("Image2Title")
               var createdAt = SinglePost.get('createdAt')
@@ -757,14 +757,14 @@ function GetPosts(hashTag)
                 {
                 SinglePost.set('isVoted1',"block")
                 SinglePost.set('isVoted2',"none")
-                alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                // alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
                 }
 
               else if(SinglePost.get('Punchers2').indexOf(Parse.User.current().id) > -1)
                 {
                   SinglePost.set('isVoted1',"none")
                   SinglePost.set('isVoted2',"block")
-                alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
+                // alert(SinglePost.Image1Title + SinglePost.Image2Title + " = isVoted1 = " + SinglePost.get('isVoted1') + " isVoted2 = " + SinglePost.get('isVoted2'));
                 }
                 else {
                   SinglePost.set('isVoted1',"none")
@@ -782,14 +782,14 @@ function GetPosts(hashTag)
 						var spinner = document.getElementById('spinner')
 						spinner.style.display = 'none'
 						$scope.$apply()
-						console.log($scope.posts.length);
+						// console.log($scope.posts.length);
 					}
 					else {
-						console.log("null");
+						// console.log("null");
 					}
 			},
 			error : function (error) {
-				console.log(error);
+				// console.log(error);
 			}
 		})
 }
@@ -878,7 +878,7 @@ function GetComments(objectId)
 						$scope.$apply()
 				},
 				error : function (error) {
-					console.log(error);
+					// console.log(error);
 				}
 			})
 }
@@ -907,8 +907,8 @@ app.controller('share',['$scope','PostService','Time',function($scope,PostServic
  	if(location.href.split('/').indexOf("share") != -1)
   {
     var objectId = location.href.split('/')[location.href.split('/').indexOf("share") + 1]
-    console.log(objectId)
-    console.log(objectId);
+    //console.log(objectId)
+    //console.log(objectId);
          Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
        var posts = Parse.Object.extend("Posts")
        var Query = new  Parse.Query(posts)
@@ -934,7 +934,7 @@ app.controller('share',['$scope','PostService','Time',function($scope,PostServic
                      SinglePost.set("Votes1",SinglePost.get('Punchers1').length)
                      SinglePost.set("Votes2",SinglePost.get('Punchers2').length)
                      $scope.SinglePost = SinglePost
-                     console.log($scope.SinglePost)
+                     //console.log($scope.SinglePost)
                      $scope.$apply()
                    }
                  });
