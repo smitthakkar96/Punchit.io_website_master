@@ -292,7 +292,7 @@ $(function(){
 			$("#main_card").css("height","1450px");
       windows.location = "/mobileLogin"
 		}else{
-			alert("false");
+			// alert("false");
 		}
 	}
 
@@ -316,7 +316,7 @@ $(function(){
                   console.log(fileUploadControl.files.length)
                   if (fileUploadControl.files.length > 0) {
                       var file = fileUploadControl.files[0];
-                      alert(JSON.stringify(file))
+                      //alert(JSON.stringify(file))
                       var name = "profilePic.png";
                       var parseFile = new Parse.File(name, file);
                       parseFile.save().then(function(){
@@ -358,7 +358,7 @@ $(function(){
   }
 
   $('#FacebookLoginBtn').click(function(){
-        alert('s')
+        // alert('s')
         Materialize.toast('Please Wait', 10000);
         // Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
         Parse.FacebookUtils.logIn(null, {
