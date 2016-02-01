@@ -26,13 +26,13 @@ app.controller("FriendsController",['$scope','GetFacebookFriends','GetFriendsFro
   },function(error){
       console.log(error);
   },function(update){
-    console.log(update);
+    //console.log(update);
     $scope.intrestBasedFriends = update
   })
 
   $scope.FollowUnfollowAction = function(d)
   {
-    console.log(d);
+    //console.log(d);
 
     var FollowType = Parse.Object.extend("FollowList")
     var FollowObject = new FollowType();
@@ -129,14 +129,14 @@ app.controller("EditProfileController",function($scope){
   $scope.Email = user.get("email");
   $scope.Ninja_name = user.get("Ninja_name");
   $scope.Name = user.get("Name")
-  alert(user.get('ProfilePicture').url())
+  //alert(user.get('ProfilePicture').url())
   $scope.image = user.get('ProfilePicture').url()
   $scope.update = function(){
     var fileUploadControl = document.getElementsByName('profilePic')[0];
-    console.log(fileUploadControl.files.length)
+    //console.log(fileUploadControl.files.length)
     if (fileUploadControl.files.length > 0) {
         var file = fileUploadControl.files[0];
-        alert(JSON.stringify(file))
+        // alert(JSON.stringify(file))
         var name = "profilePic.png";
         var parseFile = new Parse.File(name, file);
         parseFile.save().then(function(){
