@@ -392,7 +392,7 @@ $(function(){
           // alert("User logged in through Facebook!");
           var sessionToken = user.get("sessionToken")
           var token = Parse.User.current().get('authData')['facebook'].access_token
-          FB.api('/me', 'get', { access_token: token, fields: 'id,name,gender,email,picture' }, function(response) {
+          FB.api('/me', 'get', { access_token: token, fields: 'id,name,gender,email,picture.type(large)' }, function(response) {
           var ProfilePicture = response['picture']['data'].url
           console.log(ProfilePicture);
           var xhr = new XMLHttpRequest();
