@@ -120,7 +120,7 @@
   </nav>
 </div>
 <div class="row">
-<div ng-controller="InterestsController" class="card col s11 l3" style="margin-left:4%;">
+<div ng-controller="InterestsController" class="card col s11 l3" style="margin-left:4%;" id="InterestsBox">
       <ul class="collection with-header" style="border:0px solid #fff;">
         <li class="collection-header"><h5>Add or Delete Interests</h5></li>
         <li class="collection-item" ng-repeat="d in Data"><div>{a d.Text a}<div href="#!" class="secondary-content">
@@ -234,6 +234,10 @@ $(".button-collapse").sideNav();
     FriendsBox.style.display = 'None'
     var EditProfile = document.getElementById('EditProfile')
     EditProfile.style.display = 'None'
+    //InterestsBox
+    var InterestsBox = document.getElementById('InterestsBox')
+    InterestBox.style.width = "100%"
+    InterestBox.style.margin = "0px"
   }
   else {
     var NextButton = document.getElementById('Next')
