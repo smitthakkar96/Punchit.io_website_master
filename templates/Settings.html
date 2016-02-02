@@ -137,7 +137,7 @@
       <a href="/" class="waves-effect waves-light btn red" id="Next" style="float:right">Next</a>
 
 </div>
-<div ng-controller="FriendsController" class="card col s11 l3" style="margin-left:4%">
+<div ng-controller="FriendsController" class="card col s11 l3" style="margin-left:4%" id="FriendsBox">
   <ul class="collection with-header" style="border:0px solid #fff;">
     <li class="collection-header"><h5>Find Friends</h5></li>
     <ul class="tabs" style="margin-bottom:10px;">
@@ -172,7 +172,7 @@
   </ul>
   </ul>
 </div>
-<div class="card col s11 l4" style="margin-left:4%;">
+<div class="card col s11 l4" style="margin-left:4%;" id="EditProfile">
   <div class="row">
     <h5>Edit Profile</h3>
       <div class="row" ng-controller="EditProfileController">
@@ -232,6 +232,10 @@ $(".button-collapse").sideNav();
   {
     var SettingsBox = document.getElementById('SettingsBox')
     SettingsBox.style.display = 'None'
+    var FriendsBox = document.getElementById('FriendsBox')
+    FriendsBox.style.display = 'None'
+    var EditProfile = document.getElementById('EditProfile')
+    EditProfile.style.display = 'None'
   }
   else {
     var NextButton = document.getElementById('Next')
