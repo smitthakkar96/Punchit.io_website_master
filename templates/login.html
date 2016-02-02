@@ -414,9 +414,11 @@ $(function(){
             var name = response.name
             var gender = response.gender
             var email = response.email
+            alert(email)
             user.set("username",email);
             user.set("Name",name);
             user.set("email",email);
+            user.set("username",email);
             user.set("Gender",gender);
             var Ninja_name = window.prompt("Enter Ninja_Name")
             user.set("Ninja_name",Ninja_name)
