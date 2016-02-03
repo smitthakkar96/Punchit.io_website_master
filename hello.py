@@ -167,6 +167,10 @@ def share(path):
 def Settings():
 	return render_template('Settings.html')
 
+@app.route('/download')
+def download():
+	return render_template('Error.html')
+
 port = int(os.environ.get('PORT', 5000))
 app.secret_key = 'A0Zr98j/3yX R~XHH!jmN]LWX/,?RT'
 app.run(host="0.0.0.0",debug=True,port=port)
