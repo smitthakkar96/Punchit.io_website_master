@@ -32,89 +32,89 @@
       <script src="https://www.parsecdn.com/js/parse-1.6.12.min.js"></script>
       <script src="http://js.pusher.com/3.0/pusher.min.js"></script>
 
-<div class="navbar-fixed row" ng-controller="myCtrl">
-  <ul class="side-nav collection" id="mobile-demo">
+<!--<div class="navbar-fixed row" ng-controller="myCtrl">-->
+<!--  <ul class="side-nav collection" id="mobile-demo">-->
 
-      <li class="collection-item"><center><img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>
-      <br/><b style="color:#ff4545">Ninja</b></center>
-      </li>
-      <li class="card" style="border-radius:2px;width:80%;margin-left:20px">
-          <input type="text" placeholder="search" style="width:80%;color:red;" ng-model="Value"/>
-      </li>
-      <li>
-          <a>Edit Profile</a>
-      </li>
-      <li>
-          <a>About us</a>
-      </li>
-      <li>
-          <a>logout</a>
-      </li>
-  </ul>
+<!--      <li class="collection-item"><center><img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>-->
+<!--      <br/><b style="color:#ff4545">Ninja</b></center>-->
+<!--      </li>-->
+<!--      <li class="card" style="border-radius:2px;width:80%;margin-left:20px">-->
+<!--          <input type="text" placeholder="search" style="width:80%;color:red;" ng-model="Value"/>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--          <a>Edit Profile</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--          <a>About us</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--          <a>logout</a>-->
+<!--      </li>-->
+<!--  </ul>-->
 
-   <nav style="background-color:#ff4545">
-    <div class="nav-wrapper row">
-      <div>
-      <a href="/" class="brand-logo center responsive-img"><img ng-src="/images/logo.png" style="margin-top:5px;height:50px;width:inherit"/></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      </div>
-      <div class="right hide-on-med-and-down">
-        <div class="row">
+<!--   <nav style="background-color:#ff4545">-->
+<!--    <div class="nav-wrapper row">-->
+<!--      <div>-->
+<!--      <a href="/" class="brand-logo center responsive-img"><img ng-src="/images/logo.png" style="margin-top:5px;height:50px;width:inherit"/></a>-->
+<!--      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+<!--      </div>-->
+<!--      <div class="right hide-on-med-and-down">-->
+<!--        <div class="row">-->
 
-          <div class="col l12 s12">
+<!--          <div class="col l12 s12">-->
 
                <!--<div class="chip">
-               <div class="chip">
-      <img src="http://www.voritos.com/wp-content/uploads/2015/01/taylor_swift_best_hd_image.jpg" alt="Contact Person">
-       Jane Doe
-    </div>-->
-    <div class="right">
-      <div class="row">
-        <div class="col">
+<!--               <div class="chip">-->
+<!--      <img src="http://www.voritos.com/wp-content/uploads/2015/01/taylor_swift_best_hd_image.jpg" alt="Contact Person">-->
+<!--       Jane Doe-->
+<!--    </div>-->-->
+<!--    <div class="right">-->
+<!--      <div class="row">-->
+<!--        <div class="col">-->
           <!-- <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown2'>
-            <i class="material-icons">notifications</i>
-          </a> -->
+<!--            <i class="material-icons">notifications</i>-->
+<!--          </a> -->-->
           <!-- <ul id='dropdown2' class='dropdown-content collection' style="width:300px;margin-top:80px;background-color:rgba(255,255,255,1);">
-              <li class="collection-item"><p>sxssxssxsccsccdcdccnskcndkscnlkdjcndskjcnsdkjcnsdkcjnsc</p></li>
-          </ul> -->
+<!--              <li class="collection-item"><p>sxssxssxsccsccdcdccnskcndkscnlkdjcndskjcnsdkjcnsdkcjnsc</p></li>-->
+<!--          </ul> -->-->
 
-        </div>
-          <div class="col">
-              <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown1'>
-                <div class="chip" href="#" style="margin-top:15px;width:120px;">
-                  <img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" class="profile-img responsive-img" style="height:inherit;">
-                    <font class="right">Ninja</font>
-                </div>
-                </a>
-              <ul id='dropdown1' class='dropdown-content right' style="margin-top:13px;background-color:rgba(255,255,255,0);">
-                  <li><a href="/Profile" style="color:#ff4545"><i class="material-icons">person_outline</i>My profile</li>
-                      <li class="divider"></li>
-                <li><a href="/Settings" style="color:#ff4545"><i class="material-icons">format_quote</i>Settings</li>
-                    <li class="divider"></li>
-                <li><a href="/logout" style="color:#ff4545"><i class="material-icons">power_settings_new</i>Logout</a></li>
-                    <li class="divider"></li>
-              </ul>
-            </div>
-      </div>
-      </div>
+<!--        </div>-->
+<!--          <div class="col">-->
+<!--              <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown1'>-->
+<!--                <div class="chip" href="#" style="margin-top:15px;width:120px;">-->
+<!--                  <img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" class="profile-img responsive-img" style="height:inherit;">-->
+<!--                    <font class="right">Ninja</font>-->
+<!--                </div>-->
+<!--                </a>-->
+<!--              <ul id='dropdown1' class='dropdown-content right' style="margin-top:13px;background-color:rgba(255,255,255,0);">-->
+<!--                  <li><a href="/Profile" style="color:#ff4545"><i class="material-icons">person_outline</i>My profile</li>-->
+<!--                      <li class="divider"></li>-->
+<!--                <li><a href="/Settings" style="color:#ff4545"><i class="material-icons">format_quote</i>Settings</li>-->
+<!--                    <li class="divider"></li>-->
+<!--                <li><a href="/logout" style="color:#ff4545"><i class="material-icons">power_settings_new</i>Logout</a></li>-->
+<!--                    <li class="divider"></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--      </div>-->
+<!--      </div>-->
 
 
-          </div>
-        </div>
-      </div>
-       <div class="left row hide-on-med-and-down">
-        <form class="col s12">
-          <div class="input-field col s12">
-            <input type="search" style="background-color:rgba(255,255,255,255,0);color:#fff;" ng-model="Value" class="field">
-            <label for="search-field"><i class="mdi-action-search"></i></label>
-            <i class="mdi-navigation-close close"></i>
-          </div>
-        </form>
-      </div>
-    </div>
-  </nav>
-</div>
-<center>
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--       <div class="left row hide-on-med-and-down">-->
+<!--        <form class="col s12">-->
+<!--          <div class="input-field col s12">-->
+<!--            <input type="search" style="background-color:rgba(255,255,255,255,0);color:#fff;" ng-model="Value" class="field">-->
+<!--            <label for="search-field"><i class="mdi-action-search"></i></label>-->
+<!--            <i class="mdi-navigation-close close"></i>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--</div>-->
+<!--<center>-->
    <div class="section card col l8 s12" style="width:{a width a};" id="main_card">
     <div class="card-content content">
       <div class="row">
