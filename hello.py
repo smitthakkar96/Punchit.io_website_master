@@ -25,25 +25,25 @@ def make_session_permanent():
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
- 	settings_local.initParse()
-	if request.method == 'POST' and request.form["what"]== 'Login':
-		try:
-			print request.form["password"]
-			u = User.login(request.form["username"],request.form["password"])
-			session['session_token'] = u.sessionToken
-			resp = make_response(render_template("index.html"))
-			return resp
-		except:
-			return render_template('login.html',error="Invalid username or password")
-	elif request.method == 'POST' and request.form["what"]=='SignUp':
-		email = request.form["email"]
-		password = request.form["password"]
-		ninja = request.form["ninja"]
-		birthdate = request.form["birthdate"]
-		u = User.signup(email,password)
-		u.email=email
-		u.save()
-		# proPic.save(os.path.join(app.config['UPLOAD_FOLDER']),"userdp.png")
+ #	settings_local.initParse()
+	# if request.method == 'POST' and request.form["what"]== 'Login':
+	# 	try:
+	# 		print request.form["password"]
+	# 		u = User.login(request.form["username"],request.form["password"])
+	# 		session['session_token'] = u.sessionToken
+	# 		resp = make_response(render_template("index.html"))
+	# 		return resp
+	# 	except:
+	# 		return render_template('login.html',error="Invalid username or password")
+	# elif request.method == 'POST' and request.form["what"]=='SignUp':
+	# 	email = request.form["email"]
+	# 	password = request.form["password"]
+	# 	ninja = request.form["ninja"]
+	# 	birthdate = request.form["birthdate"]
+	# 	u = User.signup(email,password)
+	# 	u.email=email
+	# 	u.save()
+	# 	# proPic.save(os.path.join(app.config['UPLOAD_FOLDER']),"userdp.png")
 		# connection = httplib.HTTPSConnection('api.parse.com', 443)
 		# connection.connect()
 		# connection.request('POST', '/1/files/profilePic.png', open('userdp.png', 'rb').read(), {
@@ -66,16 +66,17 @@ def index():
 		# })
 		# result = json.loads(connection.getresponse().read())
 		# print result
-		session['session_token'] = u.sessionToken
-		resp = make_response(render_template("index.html"))
-		return u.sessionToken
-	else:
-		if session.get('session_token') is None:
-			print "nohhh"
-			return render_template('login.html')
-		else:
-			print "yes"
-			return render_template('index.html')
+	# 	session['session_token'] = u.sessionToken
+	# 	resp = make_response(render_template("index.html"))
+	# 	return u.sessionToken
+	# else:
+	# 	if session.get('session_token') is None:
+	# 		print "nohhh"
+	# 		return render_template('login.html')
+	# 	else:
+	# 		print "yes"
+	# 		return render_template('index.html')
+	return render_template('Error.html')
 
 @app.route('/js/<path:path>')
 def send_js(path):
