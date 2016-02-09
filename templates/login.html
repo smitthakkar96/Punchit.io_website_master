@@ -14,11 +14,11 @@
       <link type="text/css" rel="stylesheet" href="css/animate.css"  media="screen,projection"/>
 
 	  <style>
-	  
+
 		.slider .indicators .indicator-item.active{
 			background: #000;
 		}
-	  
+
 	  </style>
 
     </head>
@@ -27,13 +27,12 @@
 
       <!--Import jQuery before materialize.js-->
       <script src="js/jquery-2.1.1.min.js" type="text/javascript"></script>
+      <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
       <script type="text/javascript" src="js/materialize.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.0.0-rc1/angular-material.min.js"></script>
       <script type="text/javascript" src="js/app.js"></script>
-      <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
       <script src="https://www.parsecdn.com/js/parse-1.6.12.min.js"></script>
-      <script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.9/jquery.validate.js"></script>
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
 
 <!--Website Coding -->
@@ -182,8 +181,8 @@
 
 								<div class="input-field col s12" style="margin-left:7%;">
 									<i class="material-icons prefix" style="margin-top:10px;color:#ef494a; margin-left:10px;">email</i>
-									<label for="Email" style="margin-left:50px;">Email</label>
-									<input type="email" id="Email" class="validate" name="email" style="margin-left:50px;" required>
+									<label for="email" style="margin-left:50px;">Email</label>
+									<input type="email" id="email" class="validate" name="email" style="margin-left:50px;" required>
 								</div>
 
 
@@ -216,16 +215,10 @@
 									</div>
 								</div>
 
-								<div class="input-field col s12" style="margin-left:7%;margin-top:30px;">
-									<i class="material-icons prefix" style="margin-top:10px; color:#ef494a;margin-left:10px;">today</i>
-									<label for="date" style="margin-left:50px;">DoB.</label>
-									<input type="date" id="date" class="validate" style="margin-left:50px;text-align:center;" name="birthdate" required>
-								</div>
-
 								<div class="input-field col s12" style="margin-left:7%;">
 									<i class="material-icons prefix" style="margin-top:10px; color:#ef494a;margin-left:10px;">lock</i>
-									<label for="Password" style="margin-left:50px;">Password</label>
-									<input type="password" id="Password" class="validate" name="password" style="margin-left:50px;" required>
+									<label for="password" style="margin-left:50px;">Password</label>
+									<input type="password" id="password" class="validate" name="password" style="margin-left:50px;" required>
 								</div>
 
 								<div class="input-field col s12" style="margin-left:7%;">
@@ -334,10 +327,9 @@ $(window).resize(function(){
 	});
 
 $(function(){
-	 window.location="/download"
 	$('.slider').slider({full_width: true});
 	var card_height = $('#main_card').height();
-	
+
 	if($(window).width() < 1000)
 	{
 		$('#slider_section').hide(1000);
@@ -345,10 +337,10 @@ $(function(){
 	else{
 		$('#slider_section').show(1000);
 	}
-	
+
 	var width=$(window).width();
 	//alert(width);
-	
+
 	var login_class=$("#login_a").attr("class");
 	if(width < 1000){
 		if(login_class == "active"){
@@ -359,9 +351,44 @@ $(function(){
 	}
 
   $('#register').click(function(){
-    if($('#registerTarget').valid())
+    var isValid = true
+    alert($('#email').val())
+    if($('#email').val() == '' || $('#email').val() == null)
+    {
+      isValid = false;
+      Materialize.toast('Please Enter Email', 2000);
+    }
+    if($('#Name').val() == '' || $('#Name').val() == null)
+    {
+      isValid = false;
+      Materialize.toast('Please Enter your name', 2000);
+    }
+    if($('#ninja').val() == '' || $('#ninja').val() == null)
+    {
+      isValid = false;
+      Materialize.toast('Please Enter Ninja_name', 2000);
+    }
+    if($('#password').val() == '')
+    {
+      isValid = false;
+      Materialize.toast('Please Enter password', 2000);
+    }
+    if($('#password').val() != $('#confirmpassword').val())
+    {
+      isValid = false;
+      Materialize.toast('Password does not match', 2000);
+    }
+    var fup = document.getElementsByName('profilePic')[0];
+    if(fup.files.length <= 0)
+    {
+      isValid = false;
+      Materialize.toast('Please select your ProfilePicture', 2000);
+    }
+
+    if(isValid)
     {
     // $("#registerTarget").submit();
+    $('#register').addClass("disabled")
         $.ajax({
             type: 'POST',
             url: '/',
@@ -420,7 +447,6 @@ $(function(){
   }
 
   $('#FacebookLoginBtn').click(function(){
-        alert('s')
         Materialize.toast('Please Wait', 10000);
         // Parse.initialize("Y4Txek5e5lKnGzkArbcNMVKqMHyaTk3XR6COOpg4", "fR1P17QhE9b7PKOa1wXozi0yo8IAlYLSIzqYh4EU");
         Parse.FacebookUtils.logIn(null, {
