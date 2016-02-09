@@ -12,20 +12,22 @@ from flask import session, app
 import os
 import pusher
 import getPost
+from flask import Blueprint
 
 settings_local.initParse()
 app = Flask(__name__)
 Triangle(app)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
-app.config['SERVER_NAME'] = 'www.punchit.io'
+
+Hackathon = Blueprint('Hackathon', __name__,
+                        template_folder='templates',subdomain="hack404")
+app.register_blueprint(Hackathon)
+
 
 @app.before_request
 def make_session_permanent():
     session.permanent = True
     app.permanent_session_lifetime = timedelta(minutes=46440)
-    if 'hack404' == request.host[:-len(app.config['SERVER_NAME'])].rstrip('.'):
-        return redirect(url_for('Hack404'))
-
 
 @app.route('/',methods=['GET', 'POST'])
 def index():
@@ -80,9 +82,10 @@ def index():
 	# 	else:
 	# 		print "yes"
 	# 		return render_template('index.html')
+    # print "hack"
 	return render_template('Error.html')
 
-@app.route('/Hack404')
+@Hackathon.route('/')
 def hackathon():
     return render_template('hackathon.html')
 
@@ -91,10 +94,20 @@ def send_js(path):
 	print path
 	return send_from_directory('js', path)
 
-@app.route('/assets')
-def send_from_assets():
+@app.route('/assets/images/<path:path>')
+def send_from_assets_images(path):
     print path
-    return send_from_directory('assets', path)
+    return send_from_directory('assets/images', path)
+
+@app.route('/assets/javascripts/<path:path>')
+def send_from_assets_js(path):
+    print path
+    return send_from_directory('assets/javascripts', path)
+
+@app.route('/assets/stylesheets/<path:path>')
+def send_from_assets_css(path):
+    print path
+    return send_from_directory('assets/stylesheets', path)
 
 @app.route('/mobileLogin')
 def mobileLogin():
