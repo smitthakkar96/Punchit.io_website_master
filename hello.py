@@ -17,6 +17,7 @@ settings_local.initParse()
 app = Flask(__name__)
 Triangle(app)
 app.config['UPLOAD_FOLDER'] = 'uploads/'
+app.config['SERVER_NAME'] = 'www.punchit.io'
 
 @app.before_request
 def make_session_permanent():
