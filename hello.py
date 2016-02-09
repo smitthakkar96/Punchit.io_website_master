@@ -90,7 +90,7 @@ def send_from_assets():
     print path
     return send_from_directory('assets', path)
 
-@app.route('/',subdomain='hack404')
+@app.route('/',subdomain="hack404")
 def hackathon():
     return render_template('hackathon.htm')
 
