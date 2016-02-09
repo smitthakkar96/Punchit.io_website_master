@@ -22,9 +22,12 @@ app.config['UPLOAD_FOLDER'] = 'uploads/'
 def make_session_permanent():
     session.permanent = True
     app.permanent_session_lifetime = timedelta(minutes=46440)
+    if 'hack404' == request.host[:-len(app.config['SERVER_NAME'])].rstrip('.'):
+        redirect(url_for('hack404'))
 
-@app.route('/',methods=['GET', 'POST'],subdomain='<domain>')
-def index(domain):
+
+@app.route('/',methods=['GET', 'POST'])
+def index():
  #	settings_local.initParse()
 	# if request.method == 'POST' and request.form["what"]== 'Login':
 	# 	try:
@@ -76,12 +79,11 @@ def index(domain):
 	# 	else:
 	# 		print "yes"
 	# 		return render_template('index.html')
-    if domain=="hack404":
-        return render_template('Hackathon.htm')
-    else:
-        return render_template('Error.html')
+	return render_template('Error.html')
 
-
+@app.route('/Hack404')
+def hackathon():
+    return render_template('hackathon.htm')
 
 @app.route('/js/<path:path>')
 def send_js(path):
