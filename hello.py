@@ -85,7 +85,7 @@ def index():
     # print "hack"
 	return render_template('Error.html')
 
-@Hackathon.route('/')
+@app.route('/hack404')
 def hackathon():
     return render_template('hackathon.html')
 
