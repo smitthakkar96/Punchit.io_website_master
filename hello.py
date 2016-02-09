@@ -23,8 +23,8 @@ def make_session_permanent():
     session.permanent = True
     app.permanent_session_lifetime = timedelta(minutes=46440)
 
-@app.route('/',methods=['GET', 'POST'])
-def index():
+@app.route('/',methods=['GET', 'POST'],subdomain='<domain>')
+def index(domain):
  #	settings_local.initParse()
 	# if request.method == 'POST' and request.form["what"]== 'Login':
 	# 	try:
@@ -76,7 +76,10 @@ def index():
 	# 	else:
 	# 		print "yes"
 	# 		return render_template('index.html')
-	return render_template('Error.html')
+    if domain=="hack404":
+        return render_template('Hackathon.htm')
+    else:
+        return render_template('Error.html')
 
 
 
@@ -89,10 +92,6 @@ def send_js(path):
 def send_from_assets():
     print path
     return send_from_directory('assets', path)
-
-@app.route('/hack',subdomain="hack404")
-def hackathon():
-    return render_template('hackathon.htm')
 
 @app.route('/mobileLogin')
 def mobileLogin():
