@@ -84,7 +84,7 @@ def index():
 
 @app.route('/Hack404')
 def hackathon():
-    return render_template('hackathon.htm')
+    return render_template('hackathon.html')
 
 @app.route('/js/<path:path>')
 def send_js(path):
