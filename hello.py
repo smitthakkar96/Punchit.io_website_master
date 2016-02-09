@@ -24,7 +24,7 @@ def make_session_permanent():
     session.permanent = True
     app.permanent_session_lifetime = timedelta(minutes=46440)
     if 'hack404' == request.host[:-len(app.config['SERVER_NAME'])].rstrip('.'):
-        redirect(url_for('Hack404'))
+        return redirect(url_for('Hack404'))
 
 
 @app.route('/',methods=['GET', 'POST'])
