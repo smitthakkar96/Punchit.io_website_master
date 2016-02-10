@@ -1,12 +1,16 @@
 <!DOCTYPE html>
   <html ng-app="app">
-    <head ng-controller="bodyCtrl">
+    <head ng-controller="share">
       <title>Punchit.io</title>
       <!--Import Google Icon Font-->
       <meta charset="UTF-8">
-      <meta name="description" content="{a SinglePost.get('Title') a}">
-      <meta name="author" content="{a SinglePost.get('By').get('Name') a}">
+      <meta name="description" content="{{SinglePost.Title | string()}}">
       <meta name="Punchit.io">
+      <meta property="og:type"               content="article" />
+      <meta property="og:title"              content="{{SinglePost.Title | string()}}" />
+      <meta property="og:image" content="{{SinglePost.Image1.url | string()}}"/>
+      <meta property="og:image" content="{{SinglePost.Image2.url | string()}}"/>
+
 
       <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
       <!--Import materialize.css-->
@@ -17,105 +21,106 @@
       <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
     </head>
 
-    <body cz-shortcut-listen="true" ng-controller="bodyCtrl">
+    <body cz-shortcut-listen="true" ng-controller="share">
       <!--Import jQuery before materialize.js-->
       <script src="/js/jquery-2.1.1.min.js" type="text/javascript"></script>
-      <script src="http://js.pusher.com/3.0/pusher.min.js"></script>
       <script type="text/javascript" src="/js/materialize.min.js"></script>
       <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
       <script type="text/javascript" src="/js/app.js"></script>
       <script type="text/javascript" src="/js/controllers.js"></script>
       <script type="text/javascript" src="/js/factory.js"></script>
       <script src="https://www.parsecdn.com/js/parse-1.6.12.min.js"></script>
+      <script src="http://js.pusher.com/3.0/pusher.min.js"></script>
 
-<div class="navbar-fixed row" ng-controller="myCtrl">
-  <ul class="side-nav collection" id="mobile-demo">
-      <li class="collection-item"><center><img src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>
-      <br/><b style="color:#ff4545">Ninja</b></center>
-      </li>
-      <li class="card" style="border-radius:2px;width:80%;margin-left:20px">
-          <input type="text" placeholder="search" style="width:80%;color:red;" ng-model="Value"/>
-      </li>
-      <li>
-          <a>Edit Profile</a>
-      </li>
-      <li>
-          <a>About us</a>
-      </li>
-      <li>
-          <a>logout</a>
-      </li>
-  </ul>
+<!--<div class="navbar-fixed row" ng-controller="myCtrl">-->
+<!--  <ul class="side-nav collection" id="mobile-demo">-->
 
-   <nav style="background-color:#ff4545">
-    <div class="nav-wrapper row">
-      <div>
-      <a href="#" class="brand-logo center responsive-img"><img src="images/logo.png" style="margin-top:5px;height:50px;width:inherit"/></a>
-      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>
-      </div>
-      <div class="right hide-on-med-and-down">
-        <div class="row">
+<!--      <li class="collection-item"><center><img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" style="height:100px;width:100px;border:2px solid" class="circle animated infinite bounce"/>-->
+<!--      <br/><b style="color:#ff4545">Ninja</b></center>-->
+<!--      </li>-->
+<!--      <li class="card" style="border-radius:2px;width:80%;margin-left:20px">-->
+<!--          <input type="text" placeholder="search" style="width:80%;color:red;" ng-model="Value"/>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--          <a>Edit Profile</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--          <a>About us</a>-->
+<!--      </li>-->
+<!--      <li>-->
+<!--          <a>logout</a>-->
+<!--      </li>-->
+<!--  </ul>-->
 
-          <div class="col l12 s12">
+<!--   <nav style="background-color:#ff4545">-->
+<!--    <div class="nav-wrapper row">-->
+<!--      <div>-->
+<!--      <a href="/" class="brand-logo center responsive-img"><img ng-src="/images/logo.png" style="margin-top:5px;height:50px;width:inherit"/></a>-->
+<!--      <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons">menu</i></a>-->
+<!--      </div>-->
+<!--      <div class="right hide-on-med-and-down">-->
+<!--        <div class="row">-->
+
+<!--          <div class="col l12 s12">-->
 
                <!--<div class="chip">
-               <div class="chip">
-      <img src="http://www.voritos.com/wp-content/uploads/2015/01/taylor_swift_best_hd_image.jpg" alt="Contact Person">
-       Jane Doe
-    </div>-->
-    <div class="right">
-      <div class="row">
-        <div class="col">
+<!--               <div class="chip">-->
+<!--      <img src="http://www.voritos.com/wp-content/uploads/2015/01/taylor_swift_best_hd_image.jpg" alt="Contact Person">-->
+<!--       Jane Doe-->
+<!--    </div>-->-->
+<!--    <div class="right">-->
+<!--      <div class="row">-->
+<!--        <div class="col">-->
           <!-- <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown2'>
-            <i class="material-icons">notifications</i>
-          </a> -->
+<!--            <i class="material-icons">notifications</i>-->
+<!--          </a> -->-->
           <!-- <ul id='dropdown2' class='dropdown-content collection' style="width:300px;margin-top:80px;background-color:rgba(255,255,255,1);">
-              <li class="collection-item"><p>sxssxssxsccsccdcdccnskcndkscnlkdjcndskjcnsdkjcnsdkcjnsc</p></li>
-          </ul> -->
+<!--              <li class="collection-item"><p>sxssxssxsccsccdcdccnskcndkscnlkdjcndskjcnsdkjcnsdkcjnsc</p></li>-->
+<!--          </ul> -->-->
 
-        </div>
-          <div class="col">
-              <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown1'>
-                <div class="chip" href="#" style="margin-top:15px;width:120px;">
-                  <img src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" class="profile-img responsive-img" style="height:inherit;">
-                    <font class="right">Ninja</font>
-                </div>
-                </a>
-              <ul id='dropdown1' class='dropdown-content right' style="margin-top:13px;background-color:rgba(255,255,255,0);">
-                  <li><a href="/Profile" style="color:#ff4545"><i class="material-icons">person_outline</i>My profile</li>
-                      <li class="divider"></li>
-                <li><a href="/Settings" style="color:#ff4545"><i class="material-icons">format_quote</i>Settings</li>
-                    <li class="divider"></li>
-                <li><a href="/logout" style="color:#ff4545"><i class="material-icons">power_settings_new</i>Logout</a></li>
-                    <li class="divider"></li>
-              </ul>
-            </div>
-      </div>
-      </div>
+<!--        </div>-->
+<!--          <div class="col">-->
+<!--              <a class='dropdown-button' data-beloworigin='true' href='#' data-activates='dropdown1'>-->
+<!--                <div class="chip" href="#" style="margin-top:15px;width:120px;">-->
+<!--                  <img ng-src="http://files.parsetfss.com/b7dd35dc-b01c-4492-b846-ef2a47bafc6b/tfss-ee8906b2-e9e9-4502-ae01-6c62b7100bef-profilePic.png" class="profile-img responsive-img" style="height:inherit;">-->
+<!--                    <font class="right">Ninja</font>-->
+<!--                </div>-->
+<!--                </a>-->
+<!--              <ul id='dropdown1' class='dropdown-content right' style="margin-top:13px;background-color:rgba(255,255,255,0);">-->
+<!--                  <li><a href="/Profile" style="color:#ff4545"><i class="material-icons">person_outline</i>My profile</li>-->
+<!--                      <li class="divider"></li>-->
+<!--                <li><a href="/Settings" style="color:#ff4545"><i class="material-icons">format_quote</i>Settings</li>-->
+<!--                    <li class="divider"></li>-->
+<!--                <li><a href="/logout" style="color:#ff4545"><i class="material-icons">power_settings_new</i>Logout</a></li>-->
+<!--                    <li class="divider"></li>-->
+<!--              </ul>-->
+<!--            </div>-->
+<!--      </div>-->
+<!--      </div>-->
 
 
-          </div>
-        </div>
-      </div>
-       <div class="left row hide-on-med-and-down">
-        <form class="col s12">
-          <div class="input-field col s12">
-            <input type="search" style="background-color:rgba(255,255,255,255,0);color:#fff;" ng-model="Value" class="field">
-            <label for="search-field"><i class="mdi-action-search"></i></label>
-            <i class="mdi-navigation-close close"></i>
-          </div>
-        </form>
-      </div>
-    </div>
-  </nav>
-</div>
-<center>
+<!--          </div>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--       <div class="left row hide-on-med-and-down">-->
+<!--        <form class="col s12">-->
+<!--          <div class="input-field col s12">-->
+<!--            <input type="search" style="background-color:rgba(255,255,255,255,0);color:#fff;" ng-model="Value" class="field">-->
+<!--            <label for="search-field"><i class="mdi-action-search"></i></label>-->
+<!--            <i class="mdi-navigation-close close"></i>-->
+<!--          </div>-->
+<!--        </form>-->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </nav>-->
+<!--</div>-->
+<!--<center>-->
    <div class="section card col l8 s12" style="width:{a width a};" id="main_card">
     <div class="card-content content">
       <div class="row">
           <div class="col s12">
      <center class="row">
-      <img class="circle responsive-img col s6" src="{a SinglePost.get('By').get('ProfilePicture').url() a}" style="height: 50px;width:74px"/>
+      <img class="circle responsive-img col s6" ng-src="{a SinglePost.get('By').get('ProfilePicture').url() a}" style="height: 50px;width:74px"/>
 
         <span class="col s6" style="margin-top:15px;">
           <a href="/Profile?id={a SinglePost.get('By').id a}" style="color:red;float:left">{a SinglePost.get('By').get('Ninja_name') a}</a>
@@ -130,7 +135,7 @@
 
       <!-- Post Question -->
       <div style="margin-top:1%;" class="col s12">
-     <p style="color:#989489;font-size:18px;text-align:left;margin-left:1%;">{a SinglePost.get('Title') a}</p>
+     <p style="color:#989489;font-size:18px;text-align:left;margin-left:1%;">{{SinglePost.Title | string()}}</p>
 
       </div>
     </div>
@@ -140,11 +145,11 @@
   <div class="card-image" style="margin-left: 1%; margin-top:-2%;">
     <div class="row">
 
-      <div class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:300px;background-image:url('images/FinalBackground2.png');">
-          <a><img class="responsive-img" src="{a SinglePost.get('Image1').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
+      <div class="col  waves-effect waves-light" style="margin-left:3%; border:1px solid #989489;float:left;margin-right:2%;width:45%;padding:10px;height:300px;background-image:url('/images/FinalBackground2.png');">
+          <a><img class="responsive-img" src="{{SinglePost.Image1.url | string()}}" style="width: 100%;height: 100%;object-fit: contain; max-height: 100%;"></a>
       </div>
-        <div class="col waves-effect waves-light" style="margin-left:1%;border:1px solid #989489;width:45%;padding:10px;height:300px;background-image:url('images/FinalBackground2.png');">
-            <a><img class="responsive-img" src="{a SinglePost.get('Image2').url() a}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
+        <div class="col waves-effect waves-light" style="margin-left:1%;border:1px solid #989489;width:45%;padding:10px;height:300px;background-image:url('/images/FinalBackground2.png');">
+            <a><img class="responsive-img" src="{{SinglePost.Image2.url | string()}}" style="width: 100%;height: 100%;object-fit: contain; max-height:100%;"></a>
         </div>
 
   </div>
@@ -152,22 +157,21 @@
     <div class="card-content" style="margin-top:-5%;">
           <div class="row">
               <div class="col s6">
-                  <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image1Title') a}</p>
+                  <p style="text-align:center;font-size:100%;color:#ff4545">{{SinglePost.Image1Title | string()}}</p>
                   <div style="background-color:#ff4545;color: #ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
-                  <div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{a SinglePost.get('Punchers1').length a}</p></div>
+                  <div style="border:1px;"><p style="text-align:center;font-size:100%;color:red;padding-top:1%">{{SinglePost.Punchers1 | length}}</p></div>
               </div>
               <div class="col s6">
-                  <p style="text-align:center;font-size:100%;color:#ff4545">{a SinglePost.get('Image2Title') a}</p>
+                  <p style="text-align:center;font-size:100%;color:#ff4545">{{SinglePost.Image2Title | string()}}</p>
                   <div style="background-color:#ff4545;color:#ff4545;height:1px;"><hr noshade="noshade" style="border:0px"/></div>
-                  <center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;">{a SinglePost.get('Punchers2').length a}</div></center>
+                  <center style="font-size:100%;color:#ff4545;padding-top:1%"><div style="width:15%;">{{SinglePost.Punchers2 | length}}</div></center>
               </div>
 
           </div>
     </div>
-
+  
     <!-- share comment icons -->
     <!-- <div class="row">
-
       <div class="col s2 l1">
         <a><img src="images/share.png" style="margin-left:7px;height:inherit;width:70px;" id="share"></a>
       </div>
@@ -176,6 +180,7 @@
       </div>
     </div> -->
         </div>
+        <a href="https://play.google.com/store/apps/details?id=io.punch_it.punchit" style="cursor:pointer;"><img src="https://www.woodmans-food.com/wp-content/uploads/GooglePlay1.png" width="20%" style="margin-top:2%;"></a>
   </center>
 </body>
   <script>
