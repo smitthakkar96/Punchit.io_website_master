@@ -275,7 +275,12 @@
 </body>
 <script type="text/javascript">
 $(function(){
-
+  
+  var isloggingInForFirstTime = $.("authCookie")
+  if(isloggingInForFirstTime){
+  location.reload();
+  $.removeCookie("authCookie")
+  }
   $(".button-collapse").sideNav();
   $('.modal-trigger').leanModal();
   $('#textarea1').trigger('autoresize');
